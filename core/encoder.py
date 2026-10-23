@@ -18,7 +18,7 @@ def generate_ntlm(text):
 def run_crypto_encoder():
     while True:
         print(f"\n{Fore.CYAN}{Style.BRIGHT}╔{'═'*70}╗")
-        print(f"║  {Fore.WHITE}🔤 ENCODER, DECODER & HASH GENERATOR TOOLKIT{Fore.CYAN.center(28)}║")
+        print(f"║  {Fore.WHITE}[ENC] ENCODER, DECODER & HASH GENERATOR TOOLKIT{Fore.CYAN.center(25)}║")
         print(f"╚{'═'*70}╝{Style.RESET_ALL}")
         
         print(f"{Fore.WHITE}{Style.BRIGHT}DOORO HAWSHA AAD RABTO:{Style.RESET_ALL}")
@@ -43,11 +43,11 @@ def run_crypto_encoder():
             
             if sub_choice == "1":
                 encoded = base64.b64encode(text.encode('utf-8')).decode('utf-8')
-                print(f"\n{Fore.GREEN}✅ Base64 Encoded:{Style.RESET_ALL} {Fore.CYAN}{Style.BRIGHT}{encoded}{Style.RESET_ALL}")
+                print(f"\n{Fore.GREEN}[+] Base64 Encoded:{Style.RESET_ALL} {Fore.CYAN}{Style.BRIGHT}{encoded}{Style.RESET_ALL}")
             elif sub_choice == "2":
                 try:
                     decoded = base64.b64decode(text.encode('utf-8')).decode('utf-8', errors='replace')
-                    print(f"\n{Fore.GREEN}✅ Base64 Decoded:{Style.RESET_ALL} {Fore.CYAN}{Style.BRIGHT}{decoded}{Style.RESET_ALL}")
+                    print(f"\n{Fore.GREEN}[+] Base64 Decoded:{Style.RESET_ALL} {Fore.CYAN}{Style.BRIGHT}{decoded}{Style.RESET_ALL}")
                 except Exception as e:
                     print(f"\n{Fore.RED}Khalad: Base64 sax ah ma aha ({e}){Style.RESET_ALL}")
             input(f"\n{Fore.YELLOW}Riix Enter si aad u sii wadato...{Style.RESET_ALL}")
@@ -61,10 +61,10 @@ def run_crypto_encoder():
             
             if sub_choice == "1":
                 encoded = urllib.parse.quote(text)
-                print(f"\n{Fore.GREEN}✅ URL Encoded:{Style.RESET_ALL} {Fore.CYAN}{Style.BRIGHT}{encoded}{Style.RESET_ALL}")
+                print(f"\n{Fore.GREEN}[+] URL Encoded:{Style.RESET_ALL} {Fore.CYAN}{Style.BRIGHT}{encoded}{Style.RESET_ALL}")
             elif sub_choice == "2":
                 decoded = urllib.parse.unquote(text)
-                print(f"\n{Fore.GREEN}✅ URL Decoded:{Style.RESET_ALL} {Fore.CYAN}{Style.BRIGHT}{decoded}{Style.RESET_ALL}")
+                print(f"\n{Fore.GREEN}[+] URL Decoded:{Style.RESET_ALL} {Fore.CYAN}{Style.BRIGHT}{decoded}{Style.RESET_ALL}")
             input(f"\n{Fore.YELLOW}Riix Enter si aad u sii wadato...{Style.RESET_ALL}")
 
         elif choice == "3":
@@ -76,12 +76,12 @@ def run_crypto_encoder():
             
             if sub_choice == "1":
                 encoded = binascii.hexlify(text.encode('utf-8')).decode('utf-8')
-                print(f"\n{Fore.GREEN}✅ Hex:{Style.RESET_ALL} {Fore.CYAN}{Style.BRIGHT}{encoded}{Style.RESET_ALL}")
+                print(f"\n{Fore.GREEN}[+] Hex:{Style.RESET_ALL} {Fore.CYAN}{Style.BRIGHT}{encoded}{Style.RESET_ALL}")
             elif sub_choice == "2":
                 try:
                     cleaned_hex = text.replace(" ", "").replace("0x", "")
                     decoded = binascii.unhexlify(cleaned_hex).decode('utf-8', errors='replace')
-                    print(f"\n{Fore.GREEN}✅ Decoded Text:{Style.RESET_ALL} {Fore.CYAN}{Style.BRIGHT}{decoded}{Style.RESET_ALL}")
+                    print(f"\n{Fore.GREEN}[+] Decoded Text:{Style.RESET_ALL} {Fore.CYAN}{Style.BRIGHT}{decoded}{Style.RESET_ALL}")
                 except Exception as e:
                     print(f"\n{Fore.RED}Khalad: Hex sax ah ma aha ({e}){Style.RESET_ALL}")
             input(f"\n{Fore.YELLOW}Riix Enter si aad u sii wadato...{Style.RESET_ALL}")
@@ -95,12 +95,12 @@ def run_crypto_encoder():
             
             if sub_choice == "1":
                 binary_str = ' '.join(format(ord(c), '08b') for c in text)
-                print(f"\n{Fore.GREEN}✅ Binary:{Style.RESET_ALL} {Fore.CYAN}{Style.BRIGHT}{binary_str}{Style.RESET_ALL}")
+                print(f"\n{Fore.GREEN}[+] Binary:{Style.RESET_ALL} {Fore.CYAN}{Style.BRIGHT}{binary_str}{Style.RESET_ALL}")
             elif sub_choice == "2":
                 try:
                     binary_values = text.split()
                     ascii_characters = "".join([chr(int(bv, 2)) for bv in binary_values])
-                    print(f"\n{Fore.GREEN}✅ Decoded Text:{Style.RESET_ALL} {Fore.CYAN}{Style.BRIGHT}{ascii_characters}{Style.RESET_ALL}")
+                    print(f"\n{Fore.GREEN}[+] Decoded Text:{Style.RESET_ALL} {Fore.CYAN}{Style.BRIGHT}{ascii_characters}{Style.RESET_ALL}")
                 except Exception as e:
                     print(f"\n{Fore.RED}Khalad: Binary sax ah ma aha ({e}){Style.RESET_ALL}")
             input(f"\n{Fore.YELLOW}Riix Enter si aad u sii wadato...{Style.RESET_ALL}")

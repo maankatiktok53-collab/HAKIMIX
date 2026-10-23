@@ -1,10 +1,11 @@
-import os
-import re
+﻿import sys
+import subprocess
 from colorama import Fore, Style, init
 
 init(autoreset=True)
 
-def parse_and_customize_command(raw_command):
+def parse_and_customize_command(raw_command, default_target=None):
+    import re
     placeholders = re.findall(r"<[^>]+>", raw_command)
     
     if not placeholders:
@@ -12,7 +13,9 @@ def parse_and_customize_command(raw_command):
         
     print(f"\n{Fore.CYAN}┌── {Fore.YELLOW}{Style.BRIGHT}HABEYNTA AMARKA (COMMAND CUSTOMIZER){Fore.CYAN} ────────────────────┐")
     print(f"│  {Fore.WHITE}Amarka asalka ah: {Fore.GREEN}{raw_command}")
-    print(f"│  {Fore.LIGHTBLACK_EX}Fadlan geli xogta target-kaaga si amarka loogu diyaariyo:{Style.RESET_ALL}")
+    if default_target:
+        print(f"│  {Fore.MAGENTA}[Target Session-ka diyaar ah]: {Fore.YELLOW}{default_target}")
+    print(f"│  {Fore.LIGHTBLACK_EX}Geli xogta target-ka (ama riix Enter si aad u isticmaasho default-ka):{Style.RESET_ALL}")
     print(f"{Fore.CYAN}└────────────────────────────────────────────────────────────────────┘{Style.RESET_ALL}\n")
     
     customized_cmd = raw_command
@@ -20,7 +23,10 @@ def parse_and_customize_command(raw_command):
     
     for ph in unique_placeholders:
         clean_name = ph.strip("<>").replace("_", " ").title()
-        user_val = input(f"  {Fore.GREEN}● Geli {clean_name} {Fore.YELLOW}(tusaale: {ph}): {Style.RESET_ALL}").strip()
+        hint = f" (Enter={default_target})" if default_target and any(k in ph.lower() for k in ["target", "ip", "domain", "url", "host"]) else f" (tusaale: {ph})"
+        user_val = input(f"  {Fore.GREEN}[*] Geli {clean_name}{Fore.YELLOW}{hint}: {Style.RESET_ALL}").strip()
+        if not user_val and default_target and any(k in ph.lower() for k in ["target", "ip", "domain", "url", "host"]):
+            user_val = default_target
         if user_val:
             customized_cmd = customized_cmd.replace(ph, user_val)
             
@@ -39,10 +45,14 @@ def execute_command_safely(cmd_str):
     action = input(f"\n{Fore.LIGHTCYAN_EX}Dooro (1 ama 2): {Style.RESET_ALL}").strip()
     
     if action == "1":
-        print(f"\n{Fore.YELLOW}⏳ Amarku wuu bilaabmayaa... (Riix Ctrl+C haddii aad rabto inaad joojiso){Style.RESET_ALL}")
-        print(f"{Fore.LIGHTBLACK_EX}{'─'*72}{Style.RESET_ALL}\n")
+        print(f"\n{Fore.YELLOW}[...] Amarku wuu bilaabmayaa... (Riix Ctrl+C haddii aad rabto inaad joojiso){Style.RESET_ALL}")
+        import platform
+        if platform.system() == "Windows" and any(word in cmd_str for word in ["sudo", "apt", "nano", "cat /etc"]):
+            print(f"{Fore.RED}[!] DIGNIIN: Amarkan wuxuu u egyahay mid Linux ah ('sudo', 'apt', iwm). Waxaa laga yaabaa inuusan Windows ka shaqeyn.{Style.RESET_ALL}")
+        print(f"{Fore.LIGHTBLACK_EX}{'-'*72}{Style.RESET_ALL}\n")
         try:
-            os.system(cmd_str)
+            # Isticmaal subprocess halkii laga isticmaali lahaa os.system
+            res = subprocess.run(cmd_str, shell=True)
         except KeyboardInterrupt:
             print(f"\n{Fore.RED}Amarka waa la joojiyay (Interrupted).{Style.RESET_ALL}")
         except Exception as e:

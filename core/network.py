@@ -19,7 +19,7 @@ def check_port_open(host, port, timeout=3):
 def run_network_listener_helper():
     while True:
         print(f"\n{Fore.CYAN}{Style.BRIGHT}╔{'═'*70}╗")
-        print(f"║  {Fore.WHITE}📡 NETWORK DIAGNOSTICS & LISTENER HELPER TOOLKIT{Fore.CYAN.center(22)}║")
+        print(f"║  {Fore.WHITE}[NET] NETWORK DIAGNOSTICS & LISTENER HELPER TOOLKIT{Fore.CYAN.center(19)}║")
         print(f"╚{'═'*70}╝{Style.RESET_ALL}")
         
         print(f"{Fore.WHITE}{Style.BRIGHT}DOORO HAWSHA AAD RABTO:{Style.RESET_ALL}")
@@ -43,9 +43,9 @@ def run_network_listener_helper():
                 print(f"{Fore.CYAN}Baaraya xiriirka {target_host}:{target_port}...{Style.RESET_ALL}")
                 is_open = check_port_open(target_host, target_port)
                 if is_open:
-                    print(f"\n{Fore.GREEN}{Style.BRIGHT}✅ DAKADDA {target_port} WAA FURAN TAHAY (OPEN / REACHABLE)!{Style.RESET_ALL}")
+                    print(f"\n{Fore.GREEN}{Style.BRIGHT}[+] DAKADDA {target_port} WAA FURAN TAHAY (OPEN / REACHABLE)!{Style.RESET_ALL}")
                 else:
-                    print(f"\n{Fore.RED}{Style.BRIGHT}❌ DAKADDA {target_port} WAA XIRAN TAHAY AMA LAMA GAARI KARO (CLOSED / FILTERED).{Style.RESET_ALL}")
+                    print(f"\n{Fore.RED}{Style.BRIGHT}[X] DAKADDA {target_port} WAA XIRAN TAHAY AMA LAMA GAARI KARO (CLOSED / FILTERED).{Style.RESET_ALL}")
             input(f"\n{Fore.YELLOW}Riix Enter si aad u sii wadato...{Style.RESET_ALL}")
 
         elif choice == "2":
@@ -96,6 +96,6 @@ def run_network_listener_helper():
             except Exception:
                 public_ip = "Lama xiriiri karin internet-ka"
                 
-            print(f"  {Fore.CYAN}🏠 Local Network IP:{Style.RESET_ALL}  {Fore.GREEN}{local_ip}{Style.RESET_ALL}")
-            print(f"  {Fore.CYAN}🌐 Public Internet IP:{Style.RESET_ALL} {Fore.YELLOW}{public_ip}{Style.RESET_ALL}")
+            print(f"  {Fore.CYAN}[LOCAL] Local Network IP:{Style.RESET_ALL}  {Fore.GREEN}{local_ip}{Style.RESET_ALL}")
+            print(f"  {Fore.CYAN}[PUBLIC] Public Internet IP:{Style.RESET_ALL} {Fore.YELLOW}{public_ip}{Style.RESET_ALL}")
             input(f"\n{Fore.YELLOW}Riix Enter si aad u sii wadato...{Style.RESET_ALL}")

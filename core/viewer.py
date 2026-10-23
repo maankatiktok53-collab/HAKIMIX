@@ -49,9 +49,12 @@ def show_tool_details(data, category, tool):
         
         tool_info = data[category][tool]
         
-        if isinstance(tool_info, dict) and "installation" in tool_info:
+        if isinstance(tool_info, dict) and ("installation_linux" in tool_info or "installation_windows" in tool_info):
             print(f"{Fore.CYAN}┌── {Fore.YELLOW}{Style.BRIGHT}SIDA LOO SOO DEGSADO (INSTALLATION){Fore.CYAN} ────────────────────────┐")
-            print(f"│  {Fore.GREEN}{tool_info['installation']}")
+            if "installation_linux" in tool_info:
+                print(f"│  {Fore.CYAN}[LINUX]:{Style.RESET_ALL} {Fore.GREEN}{tool_info['installation_linux']}")
+            if "installation_windows" in tool_info:
+                print(f"│  {Fore.CYAN}[WINDOWS]:{Style.RESET_ALL} {Fore.GREEN}{tool_info['installation_windows']}")
             print(f"{Fore.CYAN}└────────────────────────────────────────────────────────────────────┘{Style.RESET_ALL}\n")
             commands = tool_info.get("commands", [])
         elif isinstance(tool_info, list):

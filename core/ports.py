@@ -148,7 +148,7 @@ PORT_DATABASE = {
 def run_port_encyclopedia():
     while True:
         print(f"\n{Fore.CYAN}{Style.BRIGHT}╔{'═'*70}╗")
-        print(f"║  {Fore.WHITE}📖 COMMON PORTS & PROTOCOLS ENCYCLOPEDIA (QAAMUUSKA DAKADAHA){Fore.CYAN.center(10)}║")
+        print(f"║  {Fore.WHITE}[BOOK] COMMON PORTS & PROTOCOLS ENCYCLOPEDIA (QAAMUUSKA DAKADAHA){Fore.CYAN.center(6)}║")
         print(f"╚{'═'*70}╝{Style.RESET_ALL}")
         
         print(f"{Fore.WHITE}{Style.BRIGHT}DOOKHYADA RAADINTA:{Style.RESET_ALL}")
@@ -173,9 +173,9 @@ def run_port_encyclopedia():
             print(f"\n{Fore.CYAN}╔{'═'*70}╗")
             print(f"║  {Fore.YELLOW}{Style.BRIGHT}DAKADDA: {query} / {data['transport']} - {data['service'].upper()}{Fore.CYAN.center(10)}║")
             print(f"╚{'═'*70}╝{Style.RESET_ALL}")
-            print(f"  {Fore.CYAN}📌 Sharaxaadda:{Style.RESET_ALL}     {Fore.WHITE}{data['description']}{Style.RESET_ALL}")
-            print(f"  {Fore.YELLOW}⚠️  Qodobada Amniga:{Style.RESET_ALL} {Fore.WHITE}{data['security_notes']}{Style.RESET_ALL}")
-            print(f"  {Fore.GREEN}🛠️  Aaladaha Baarista:{Style.RESET_ALL} {Fore.LIGHTGREEN_EX}{data['top_tools']}{Style.RESET_ALL}\n")
+            print(f"  {Fore.CYAN}[*] Sharaxaadda:{Style.RESET_ALL}     {Fore.WHITE}{data['description']}{Style.RESET_ALL}")
+            print(f"  {Fore.YELLOW}[!] Qodobada Amniga:{Style.RESET_ALL} {Fore.WHITE}{data['security_notes']}{Style.RESET_ALL}")
+            print(f"  {Fore.GREEN}[TOOLS] Aaladaha Baarista:{Style.RESET_ALL} {Fore.LIGHTGREEN_EX}{data['top_tools']}{Style.RESET_ALL}\n")
             input(f"{Fore.YELLOW}Riix Enter si aad u sii wadato...{Style.RESET_ALL}")
         else:
             print(f"\n{Fore.RED}Dakadda '{query}' lagama helin database-ka aasaasiga ah. Hubi inaad gelisay lambar sax ah.{Style.RESET_ALL}")

@@ -6,7 +6,7 @@ init(autoreset=True)
 
 def search_framework(cheatsheet_data):
     print(f"\n{Fore.CYAN}{Style.BRIGHT}╔{'═'*70}╗")
-    print(f"║  {Fore.WHITE}🔍 RAADINTA TOOSKA AH EE HAKIMIX (SEARCH ENGINE){Fore.CYAN.center(26)}║")
+    print(f"║  {Fore.WHITE}[SEARCH] RAADINTA TOOSKA AH EE HAKIMIX (SEARCH ENGINE){Fore.CYAN.center(20)}║")
     print(f"╚{'═'*70}╝{Style.RESET_ALL}")
     
     query = input(f"\n{Fore.LIGHTCYAN_EX}Geli ereyga aad baarayso (tusaale: nuclei, nmap, xss, sqli, port, wifi): {Style.RESET_ALL}").strip()
@@ -20,15 +20,17 @@ def search_framework(cheatsheet_data):
     
     for category, tools in cheatsheet_data.items():
         for tool_name, tool_data in tools.items():
-            install_info = ""
+            install_linux = ""
+            install_win = ""
             commands = []
             if isinstance(tool_data, dict):
-                install_info = tool_data.get("installation", "")
+                install_linux = tool_data.get("installation_linux", "")
+                install_win = tool_data.get("installation_windows", "")
                 commands = tool_data.get("commands", [])
             elif isinstance(tool_data, list):
                 commands = tool_data
                 
-            tool_matched = (query_lower in tool_name.lower()) or (query_lower in install_info.lower()) or (query_lower in category.lower())
+            tool_matched = (query_lower in tool_name.lower()) or (query_lower in install_linux.lower()) or (query_lower in install_win.lower()) or (query_lower in category.lower())
             
             for cmd_item in commands:
                 cmd_str = cmd_item.get("command", "")
@@ -38,7 +40,8 @@ def search_framework(cheatsheet_data):
                     matches.append({
                         "category": category,
                         "tool": tool_name,
-                        "installation": install_info,
+                        "installation_linux": install_linux,
+                        "installation_windows": install_win,
                         "command": cmd_str,
                         "description": desc_str
                     })
@@ -56,8 +59,10 @@ def search_framework(cheatsheet_data):
         highlighted_cmd = re.sub(f"(?i)({re.escape(query)})", f"{Fore.YELLOW}\\1{Fore.GREEN}", item['command'])
         
         print(f"\n{Fore.CYAN}[{idx:02d}] Qeybta:{Style.RESET_ALL} {item['category']} ➔ {Fore.CYAN}{Style.BRIGHT}{highlighted_tool}{Style.RESET_ALL}")
-        if item['installation']:
-            print(f"     {Fore.LIGHTBLACK_EX}Shubashada:{Style.RESET_ALL} {item['installation']}")
+        if item.get('installation_linux'):
+            print(f"     {Fore.LIGHTBLACK_EX}[LINUX]:{Style.RESET_ALL} {item['installation_linux']}")
+        if item.get('installation_windows'):
+            print(f"     {Fore.LIGHTBLACK_EX}[WINDOWS]:{Style.RESET_ALL} {item['installation_windows']}")
         print(f"     {Fore.GREEN}{Style.BRIGHT}Amarka:{Style.RESET_ALL} {highlighted_cmd}")
         print(f"     {Fore.WHITE}Micnaha:{Style.RESET_ALL} {item['description']}")
         
