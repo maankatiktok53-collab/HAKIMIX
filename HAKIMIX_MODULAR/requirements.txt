@@ -1,0 +1,14 @@
+# HAKIMIX uses only the Python 3 standard library.
+# No pip packages are required or installed by this toolkit.
+
+# Optional system tools (install with your distro package manager if needed):
+#   nmap        - TCP port scanning and service version detection
+#   curl        - HTTP requests and header retrieval
+#   dig         - DNS record queries
+#   whois       - WHOIS lookups
+#   openssl     - TLS fallback (Python ssl is used primarily)
+#   whatweb     - web technology fingerprinting
+#   gobuster    - controlled directory discovery
+#   nikto       - optional web checks (disabled by default)
+#   john        - offline wordlist hash auditing
+#   hashcat     - alternative offline hash auditing (CPU allowed)
