@@ -5,7 +5,7 @@
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=flat-square&logo=python)
 ![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20Windows-green?style=flat-square)
 ![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)
-![Version](https://img.shields.io/badge/Version-3.0%20Ultimate-red?style=flat-square)
+![Version](https://img.shields.io/badge/Version-4.0%20Ultimate-red?style=flat-square)
 
 ---
 
@@ -95,11 +95,15 @@ HAKIMIX/
 │   ├── encoder.py      # Encoder / Decoder / Hash toolkit
 │   ├── scraper.py      # Live cybersecurity news scraper
 │   ├── ports.py        # Ports & protocols encyclopedia
+│   ├── protocols.py    # Protocol browser with matching tools
 │   ├── search.py       # Global search engine
 │   ├── network.py      # Network diagnostics & listener helper
+│   ├── session.py      # Target & notes persistence
+│   ├── web_audit.py    # HTTP header, cookie & TLS audit
 │   └── exporter.py     # Export cheatsheets to Markdown
 └── data/
-    └── commands.json   # Full command database (100+ commands)
+    ├── commands.json   # Full command database (100+ commands)
+    └── session.json    # Saved target & notes
 ```
 
 ---
@@ -126,9 +130,11 @@ HAKIMIX/
 | `[S]` | 🔍 Search across all tools and commands |
 | `[C]` | 🔤 Encoder / Decoder / Hash Generator (Base64, URL, Hex, Binary, MD5, SHA256, NTLM) |
 | `[P]` | 📖 Ports Encyclopedia (port info, vulnerabilities, and tools) |
-| `[N]` | 📡 Network Diagnostics (port checker, listener generator, IP lookup, HTTP server) |
+| `[N]` | 🌐 Protocol Browser — pick a protocol, see matching tools and commands |
 | `[E]` | 📁 Export cheatsheets to Markdown file |
-| `[9]` | 📰 Live Cyber News (real-time from The Hacker News, BleepingComputer, SecurityWeek) |
+| `[W]` | 🛡️ Web Security & SSL Audit (headers, cookies, TLS) |
+| `[T]` | 🎯 Target Session Manager (target + notes) |
+| `[9]` | 📰 Live Cyber News (real-time from The Hacker News, BleepingComputer, CISA) |
 | `[10]` | ⚠️ Live CVE & Vulnerability News |
 
 ---
@@ -138,15 +144,17 @@ HAKIMIX/
 ```
   ┌─────────────────────────────────────────────────────────────┐
   │  [ CYBERSECURITY ASSISTANT & COMMAND KNOWLEDGE HUB ]        │
-  │  Created by: HAKIMI  │  v3.0 Ultimate Edition               │
+  │  Created by: HAKIMI  │  v4.0 Ultimate Edition               │
   └─────────────────────────────────────────────────────────────┘
 
 ┌── SPECIAL UTILITIES ───────────────────────────────────────────┐
 │  [S] Search all tools & commands                               │
 │  [C] Encoder / Decoder & Hash Toolkit                          │
 │  [P] Ports Encyclopedia                                        │
-│  [N] Network Diagnostics & Listener Helper                     │
+│  [N] Protocol & Tool Browser                                   │
 │  [E] Export Cheatsheets to Markdown                            │
+│  [W] Web Security & SSL Audit                                  │
+│  [T] Set / View Target Session                                 │
 └────────────────────────────────────────────────────────────────┘
 
 ┌── TOOL CATEGORIES ─────────────────────────────────────────────┐
@@ -171,6 +179,7 @@ HAKIMIX/
 requests
 beautifulsoup4
 colorama
+rich
 ```
 
 Install with:

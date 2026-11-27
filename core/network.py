@@ -1,5 +1,5 @@
 import socket
-import os
+import subprocess
 import requests
 from colorama import Fore, Style, init
 
@@ -74,7 +74,7 @@ def run_network_listener_helper():
             if act == "1":
                 print(f"{Fore.YELLOW}Server-ka wuu bilaabmay dakadda {port}... (Riix Ctrl+C si aad u joojiso){Style.RESET_ALL}")
                 try:
-                    os.system(f"python -m http.server {port}")
+                    subprocess.run(["python3", "-m", "http.server", port])
                 except Exception as e:
                     print(f"{Fore.RED}Khalad: {e}{Style.RESET_ALL}")
             input(f"\n{Fore.YELLOW}Riix Enter si aad u sii wadato...{Style.RESET_ALL}")

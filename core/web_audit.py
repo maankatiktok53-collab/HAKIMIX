@@ -1,4 +1,5 @@
 ﻿import ssl, socket, requests
+from urllib.parse import urlparse
 
 SECURITY_HEADERS = [
     "Content-Security-Policy",
@@ -37,10 +38,15 @@ def check_http_headers(url):
         result["score"] = max(0, score)
     except Exception as e:
         result["error"] = str(e)
+    parsed = urlparse(url)
+    host = parsed.hostname or ""
+    port = parsed.port or (443 if parsed.scheme == "https" else 80)
+    if parsed.scheme != "https" and port != 443:
+        result["ssl_info"] = {"error": "TLS check skipped (non-HTTPS URL)"}
+        return result
     try:
-        host = url.replace("https://", "").replace("http://", "").split("/")[0]
         ctx = ssl.create_default_context()
-        with ctx.wrap_socket(socket.create_connection((host, 443), timeout=8), server_hostname=host) as ss:
+        with ctx.wrap_socket(socket.create_connection((host, port), timeout=8), server_hostname=host) as ss:
             cert = ss.getpeercert()
             result["ssl_info"] = {"version": ss.version(), "expires": cert.get("notAfter", "Unknown")}
     except Exception as e:

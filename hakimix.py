@@ -16,7 +16,7 @@ from core.search import search_framework
 from core.exporter import export_cheatsheet_to_file, export_news_to_file, export_web_audit_html
 from core.encoder import run_crypto_encoder
 from core.ports import run_port_encyclopedia
-from core.network import run_network_listener_helper
+from core.protocols import run_protocol_browser
 from core.session import get_current_session, set_target, clear_session, add_note
 from core.web_audit import check_http_headers
 
@@ -48,7 +48,7 @@ def show_menu():
     util.add_row("[S]", "Search - Raadi Amaro iyo Qalab")
     util.add_row("[C]", "Encoder / Decoder / Hash Toolkit")
     util.add_row("[P]", "Ports Encyclopedia")
-    util.add_row("[N]", "Network Diagnostics & Listener")
+    util.add_row("[N]", "Protocol & Tool Browser")
     util.add_row("[E]", "Export Cheatsheets (Markdown)")
     util.add_row("[W]", "[bold green]Web Security & SSL Audit [NEW][/bold green]")
     util.add_row("[T]", "[bold green]Set / View Target Session [NEW][/bold green]")
@@ -174,8 +174,7 @@ def main():
             console.print(Panel("[bold cyan]Mahadsanid! Nabad gelyo. - HAKIMI[/bold cyan]", border_style="cyan"))
             break
         elif choice == "S":
-            q = Prompt.ask("  [green]Geli raadinta[/green]")
-            search_framework(cheatsheets, q)
+            search_framework(cheatsheets)
         elif choice == "C":
             run_crypto_encoder()
             continue
@@ -183,7 +182,7 @@ def main():
             run_port_encyclopedia()
             continue
         elif choice == "N":
-            run_network_listener_helper()
+            run_protocol_browser(cheatsheets)
             continue
         elif choice == "E":
             cn = Prompt.ask("  [green]Geli nambarada qaybta (1-8)[/green]")

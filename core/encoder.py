@@ -6,14 +6,51 @@ from colorama import Fore, Style, init
 
 init(autoreset=True)
 
+def _md4(data):
+    def rol(value, count):
+        return ((value << count) | (value >> (32 - count))) & 0xffffffff
+
+    message = bytearray(data)
+    bit_length = (len(message) * 8) & 0xffffffffffffffff
+    message.append(0x80)
+    while len(message) % 64 != 56:
+        message.append(0)
+    message.extend(bit_length.to_bytes(8, "little"))
+
+    a0, b0, c0, d0 = 0x67452301, 0xefcdab89, 0x98badcfe, 0x10325476
+    shifts1 = (3, 7, 11, 19)
+    shifts2 = (3, 5, 9, 13)
+    shifts3 = (3, 9, 11, 15)
+    order2 = (0, 4, 8, 12, 1, 5, 9, 13, 2, 6, 10, 14, 3, 7, 11, 15)
+    order3 = (0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15)
+
+    for offset in range(0, len(message), 64):
+        words = [int.from_bytes(message[offset + i * 4: offset + i * 4 + 4], "little") for i in range(16)]
+        a, b, c, d = a0, b0, c0, d0
+        for i in range(16):
+            value = a + ((b & c) | (~b & d)) + words[i]
+            a, b, c, d = d, rol(value & 0xffffffff, shifts1[i % 4]), b, c
+        for i in range(16):
+            value = a + ((b & c) | (b & d) | (c & d)) + words[order2[i]] + 0x5a827999
+            a, b, c, d = d, rol(value & 0xffffffff, shifts2[i % 4]), b, c
+        for i in range(16):
+            value = a + (b ^ c ^ d) + words[order3[i]] + 0x6ed9eba1
+            a, b, c, d = d, rol(value & 0xffffffff, shifts3[i % 4]), b, c
+        a0 = (a0 + a) & 0xffffffff
+        b0 = (b0 + b) & 0xffffffff
+        c0 = (c0 + c) & 0xffffffff
+        d0 = (d0 + d) & 0xffffffff
+
+    return b"".join(value.to_bytes(4, "little") for value in (a0, b0, c0, d0)).hex()
+
+
 def generate_ntlm(text):
     """Abuurista NTLM hash (UTF-16LE MD4)."""
+    data = text.encode("utf-16le")
     try:
-        ntlm_hash = hashlib.new('md4', text.encode('utf-16le')).hexdigest()
-        return ntlm_hash
+        return hashlib.new("md4", data, usedforsecurity=False).hexdigest()
     except Exception:
-        # Fallback haddii md4 algorithm uusan ku jirin nidaamka
-        return "MD4 lama helin nidaamkaaga"
+        return _md4(data)
 
 def run_crypto_encoder():
     while True:
